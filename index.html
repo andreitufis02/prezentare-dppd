@@ -1,0 +1,3121 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Designul de Instruire - Fundament al Școlii Viitorului</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #051C2C;
+  --navy-mid: #092B44;
+  --navy-light: #0D3B5C;
+  --blue: #027AB1;
+  --blue-mid: #1A8FC4;
+  --blue-light: #5AB8E0;
+  --blue-pale: #D4EBF7;
+  --white: #FFFFFF;
+  --grey-50: #F7F8FA;
+  --grey-100: #EEF0F3;
+  --grey-200: #DEE1E8;
+  --grey-400: #8E95A5;
+  --grey-600: #525B6B;
+  --grey-800: #242B36;
+  --grey-900: #10161F;
+  --gold: #B49A2E;
+  --gold-light: #E8D87A;
+  --accent-red: #BE1E2D;
+  --accent-green: #1A6644;
+
+  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--grey-900);
+  background: var(--white);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* PROGRESS BAR */
+#progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blue), var(--blue-light));
+  z-index: 9999;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+/* SIDEBAR NAV */
+#sidebar {
+  position: fixed;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 998;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.nav-item {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.nav-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--grey-400);
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.nav-item.active .nav-dot {
+  background: var(--blue);
+  transform: scale(1.5);
+}
+
+.nav-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--grey-600);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.nav-item:hover .nav-dot { background: var(--blue-mid); transform: scale(1.3); }
+.nav-item:hover .nav-label { opacity: 1; }
+
+/* SECTIONS */
+section {
+  min-height: 100vh;
+  padding: 80px 80px 80px 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-inner {
+  max-width: 1140px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+section.bg-navy { background: var(--navy); color: var(--white); }
+section.bg-white { background: var(--white); }
+section.bg-light { background: var(--grey-50); }
+
+/* SECTION BG NUMBER */
+.bg-number {
+  position: absolute;
+  right: 100px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-mono);
+  font-size: 220px;
+  font-weight: 600;
+  line-height: 1;
+  color: rgba(255,255,255,0.025);
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.05em;
+}
+
+section.bg-white .bg-number,
+section.bg-light .bg-number {
+  color: rgba(0,0,0,0.03);
+}
+
+/* SECTION LABEL */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.section-label-text {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blue-light);
+}
+
+section.bg-white .section-label-text,
+section.bg-light .section-label-text {
+  color: var(--blue);
+}
+
+.section-label-line {
+  width: 36px;
+  height: 1px;
+  background: var(--blue-light);
+}
+
+section.bg-white .section-label-line,
+section.bg-light .section-label-line {
+  background: var(--blue);
+}
+
+/* TYPOGRAPHY */
+h1.display-title {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 5.5vw, 80px);
+  font-weight: 300;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  max-width: 900px;
+}
+
+h1.display-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--blue-light);
+}
+
+h2.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 3.8vw, 56px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin-bottom: 20px;
+}
+
+section.bg-navy h2.section-title { color: var(--white); }
+section.bg-white h2.section-title,
+section.bg-light h2.section-title { color: var(--grey-900); }
+
+h3.sub-title {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.2vw, 32px);
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+section.bg-navy h3.sub-title { color: var(--white); }
+section.bg-white h3.sub-title, section.bg-light h3.sub-title { color: var(--grey-900); }
+
+p.lead {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.75;
+  max-width: 700px;
+}
+
+section.bg-navy p.lead { color: rgba(255,255,255,0.65); }
+section.bg-white p.lead, section.bg-light p.lead { color: var(--grey-600); }
+
+p.body-text {
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+section.bg-navy p.body-text { color: rgba(255,255,255,0.6); }
+section.bg-white p.body-text, section.bg-light p.body-text { color: var(--grey-600); }
+
+/* CALLOUT */
+.callout {
+  border-left: 3px solid var(--blue);
+  padding: 20px 28px;
+  margin: 28px 0;
+  background: var(--blue-pale);
+  border-radius: 0 3px 3px 0;
+}
+
+section.bg-navy .callout {
+  background: rgba(2,122,177,0.12);
+  border-left-color: var(--blue-light);
+}
+
+.callout p {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-style: italic;
+  color: var(--navy);
+  line-height: 1.55;
+}
+
+section.bg-navy .callout p { color: rgba(255,255,255,0.9); }
+
+.callout .source {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--grey-600);
+  margin-top: 8px;
+  letter-spacing: 0.05em;
+}
+
+section.bg-navy .callout .source { color: rgba(255,255,255,0.4); }
+
+/* RULE */
+.hr { width: 100%; height: 1px; background: var(--grey-200); margin: 36px 0; }
+section.bg-navy .hr { background: rgba(255,255,255,0.1); }
+
+/* STAT GRID */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 32px 0;
+}
+
+.stat-card {
+  padding: 28px 24px;
+  border-top: 3px solid var(--blue);
+  background: var(--white);
+  border-left: 1px solid var(--grey-200);
+  border-right: 1px solid var(--grey-200);
+  border-bottom: 1px solid var(--grey-200);
+}
+
+section.bg-navy .stat-card {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.1);
+  border-top-color: var(--blue-light);
+}
+
+.stat-number {
+  font-family: var(--font-mono);
+  font-size: 46px;
+  font-weight: 600;
+  color: var(--blue);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+section.bg-navy .stat-number { color: var(--blue-light); }
+
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--grey-400);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+
+.stat-desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--grey-600);
+}
+
+section.bg-navy .stat-desc { color: rgba(255,255,255,0.45); }
+
+/* CARD GRID */
+.card-grid {
+  display: grid;
+  gap: 18px;
+  margin: 28px 0;
+}
+
+.card-grid.col-2 { grid-template-columns: repeat(2, 1fr); }
+.card-grid.col-3 { grid-template-columns: repeat(3, 1fr); }
+.card-grid.col-4 { grid-template-columns: repeat(4, 1fr); }
+
+.content-card {
+  padding: 24px 26px;
+  background: var(--white);
+  border: 1px solid var(--grey-200);
+  border-top: 2px solid var(--blue);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.content-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.07);
+}
+
+section.bg-navy .content-card {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.1);
+  border-top-color: var(--blue-light);
+}
+
+section.bg-light .content-card { background: var(--white); }
+
+.content-card .card-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--blue);
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+
+section.bg-navy .content-card .card-num { color: var(--blue-light); }
+
+.content-card h4 {
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  color: var(--grey-900);
+}
+
+section.bg-navy .content-card h4 { color: var(--white); }
+
+.content-card p {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--grey-600);
+}
+
+section.bg-navy .content-card p { color: rgba(255,255,255,0.5); }
+
+/* MYTH CARDS */
+.myth-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin: 28px 0;
+  border: 1px solid var(--grey-200);
+}
+
+.myth-col { padding: 0; }
+
+.myth-col-header {
+  padding: 14px 24px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.myth-col-header.myth { background: var(--grey-200); color: var(--grey-800); }
+.myth-col-header.reality { background: var(--navy); color: var(--white); }
+
+.myth-item {
+  padding: 16px 24px;
+  border-top: 1px solid var(--grey-200);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--grey-600);
+}
+
+.reality-item {
+  padding: 16px 24px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.65);
+  background: var(--navy-mid);
+}
+
+.reality-item strong { color: var(--blue-light); }
+
+/* TWO COLUMN LAYOUT */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+  margin: 28px 0;
+}
+
+.two-col.wide-left { grid-template-columns: 1.4fr 1fr; }
+.two-col.wide-right { grid-template-columns: 1fr 1.4fr; }
+
+/* NUMBERED LIST */
+.numbered-list {
+  list-style: none;
+  margin: 20px 0;
+}
+
+.numbered-list li {
+  display: flex;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--grey-200);
+  font-size: 14.5px;
+  color: var(--grey-700, #374151);
+  align-items: flex-start;
+}
+
+section.bg-navy .numbered-list li {
+  border-bottom-color: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.7);
+}
+
+.numbered-list li:last-child { border-bottom: none; }
+
+.list-num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--blue);
+  min-width: 28px;
+  padding-top: 2px;
+}
+
+section.bg-navy .list-num { color: var(--blue-light); }
+
+/* PRINCIPLE CARDS */
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  margin: 24px 0;
+  background: var(--grey-200);
+  border: 1px solid var(--grey-200);
+}
+
+.principle-item {
+  background: var(--white);
+  padding: 18px 22px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  transition: background 0.15s ease;
+}
+
+.principle-item:hover { background: var(--blue-pale); }
+
+.principle-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--blue-pale);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+section.bg-navy .principle-icon { background: rgba(2,122,177,0.2); }
+
+.principle-icon svg { width: 16px; height: 16px; color: var(--blue); }
+section.bg-navy .principle-icon svg { color: var(--blue-light); }
+
+.principle-text h5 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--grey-900);
+  margin-bottom: 4px;
+  letter-spacing: 0.02em;
+}
+
+.principle-text p {
+  font-size: 12.5px;
+  color: var(--grey-600);
+  line-height: 1.5;
+}
+
+/* GAGNE TIMELINE */
+.gagne-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3px;
+  margin: 20px 0;
+  background: var(--grey-200);
+}
+
+.gagne-item {
+  background: var(--white);
+  padding: 14px 18px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  transition: background 0.15s ease;
+}
+
+.gagne-item:hover { background: var(--navy); }
+.gagne-item:hover .gagne-num { color: var(--blue-light); }
+.gagne-item:hover .gagne-title { color: var(--white); }
+.gagne-item:hover .gagne-desc { color: rgba(255,255,255,0.5); }
+
+.gagne-item.highlighted {
+  background: var(--navy);
+  border-left: 3px solid var(--blue-light);
+}
+.gagne-item.highlighted .gagne-num { color: var(--blue-light); }
+.gagne-item.highlighted .gagne-title { color: var(--white); }
+.gagne-item.highlighted .gagne-desc { color: rgba(255,255,255,0.5); }
+
+.gagne-num {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--blue);
+  min-width: 28px;
+  line-height: 1;
+  padding-top: 2px;
+}
+
+.gagne-content .gagne-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--grey-900);
+  margin-bottom: 3px;
+  letter-spacing: 0.02em;
+}
+
+.gagne-content .gagne-desc {
+  font-size: 12px;
+  color: var(--grey-600);
+  line-height: 1.45;
+}
+
+/* TPACK DIAGRAM */
+.tpack-wrapper {
+  position: relative;
+  width: 420px;
+  height: 380px;
+  margin: 0 auto;
+}
+
+.tpack-circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.75;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+
+.tpack-wrapper:hover .tpack-circle { opacity: 0.5; }
+.tpack-wrapper:hover .tpack-circle:hover { opacity: 1; }
+
+.circle-tk {
+  width: 200px; height: 200px;
+  background: rgba(2,122,177,0.25);
+  border: 2px solid var(--blue);
+  top: 0; right: 60px;
+  color: var(--blue);
+}
+
+.circle-pk {
+  width: 200px; height: 200px;
+  background: rgba(26,102,68,0.2);
+  border: 2px solid var(--accent-green);
+  bottom: 20px; left: 30px;
+  color: var(--accent-green);
+}
+
+.circle-ck {
+  width: 200px; height: 200px;
+  background: rgba(180,154,46,0.2);
+  border: 2px solid var(--gold);
+  bottom: 20px; right: 20px;
+  color: var(--gold);
+}
+
+.tpack-label {
+  position: absolute;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(255,255,255,0.9);
+  padding: 4px 8px;
+  border-radius: 2px;
+}
+
+section.bg-navy .tpack-label { background: rgba(5,28,44,0.9); color: var(--white); }
+
+.lbl-tpk { top: 155px; left: 80px; color: var(--blue); }
+.lbl-tck { top: 155px; right: 55px; color: var(--gold); }
+.lbl-pck { bottom: 60px; left: 170px; color: var(--accent-green); }
+
+.lbl-tpack {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-20%, -50%);
+  background: var(--navy);
+  color: var(--white);
+  padding: 6px 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  z-index: 10;
+  border: 2px solid var(--blue-light);
+}
+
+/* SAMR DIAGRAM */
+.samr-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin: 20px 0;
+}
+
+.samr-level {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+
+.samr-badge {
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--white);
+  flex-shrink: 0;
+}
+
+.samr-body {
+  flex: 1;
+  padding: 16px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.samr-body h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  letter-spacing: 0.03em;
+}
+
+.samr-body p {
+  font-size: 12.5px;
+  line-height: 1.5;
+  opacity: 0.75;
+}
+
+.samr-tag {
+  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.samr-r { background: #0A2540; color: #fff; }
+.samr-r .samr-badge { background: #0A2540; }
+.samr-r .samr-body { background: #0D3258; color: #fff; }
+.samr-r .samr-tag { background: #0A1E35; color: var(--blue-light); }
+
+.samr-m { background: #0B3254; color: #fff; }
+.samr-m .samr-badge { background: var(--blue); }
+.samr-m .samr-body { background: #0E3F6A; color: #fff; }
+.samr-m .samr-tag { background: #0A2849; color: var(--blue-light); }
+
+.samr-a { background: #E8F4FB; }
+.samr-a .samr-badge { background: var(--grey-400); color: var(--white); }
+.samr-a .samr-body { background: #F0F8FE; }
+.samr-a .samr-body h4 { color: var(--grey-800); }
+.samr-a .samr-body p { color: var(--grey-600); }
+.samr-a .samr-tag { background: #DDE8F0; color: var(--grey-600); }
+
+.samr-s { background: var(--grey-100); }
+.samr-s .samr-badge { background: var(--grey-200); color: var(--grey-600); }
+.samr-s .samr-body { background: var(--grey-100); }
+.samr-s .samr-body h4 { color: var(--grey-800); }
+.samr-s .samr-body p { color: var(--grey-600); }
+.samr-s .samr-tag { background: var(--grey-200); color: var(--grey-600); }
+
+.samr-divider {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--blue);
+  padding: 8px 0;
+  border-top: 1px dashed var(--blue);
+  border-bottom: 1px dashed var(--blue);
+  margin: 4px 0;
+}
+
+/* PIC-RAT MATRIX */
+.picrat-wrapper {
+  margin: 24px 0;
+  overflow: hidden;
+}
+
+.picrat-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+}
+
+.picrat-table th {
+  padding: 12px 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+  background: var(--navy);
+  color: var(--white);
+  border: 2px solid var(--navy-mid);
+}
+
+.picrat-table .row-header {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  background: var(--navy-light);
+  color: var(--white);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-align: center;
+  padding: 16px 10px;
+  width: 44px;
+  border: 2px solid var(--navy-mid);
+  text-transform: uppercase;
+}
+
+.picrat-cell {
+  padding: 20px 16px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 700;
+  border: 2px solid var(--grey-200);
+  cursor: default;
+  transition: all 0.15s ease;
+}
+
+.picrat-cell:hover {
+  transform: scale(1.05);
+  z-index: 2;
+  position: relative;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.cell-cr, .cell-ca, .cell-ct { color: var(--accent-green); background: #F0FBF5; }
+.cell-ir, .cell-ia, .cell-it { color: var(--blue); background: #F0F8FD; }
+.cell-pr, .cell-pa, .cell-pt { color: var(--grey-600); background: var(--grey-50); }
+.cell-ct { background: #D4EAD7; border: 3px solid var(--accent-green); }
+.cell-ct::after { content: " ★"; font-size: 14px; }
+
+/* 6E MODEL */
+.sixe-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  margin: 24px 0;
+  background: var(--grey-200);
+}
+
+.sixe-card {
+  background: var(--navy);
+  padding: 24px 22px;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.2s ease;
+}
+
+.sixe-card:hover { background: var(--navy-light); }
+
+.sixe-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--blue-light);
+}
+
+.sixe-card.center-card {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  background: var(--blue);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.sixe-card.center-card::before { background: rgba(255,255,255,0.3); }
+
+.sixe-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--blue-light);
+  margin-bottom: 8px;
+}
+
+.sixe-card.center-card .sixe-label { color: rgba(255,255,255,0.6); }
+
+.sixe-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.sixe-desc {
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.5;
+}
+
+/* COMPARISON TABLE */
+.comp-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 13px;
+}
+
+.comp-table thead tr th {
+  background: var(--navy);
+  color: var(--white);
+  padding: 13px 18px;
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.comp-table tbody tr td {
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--grey-200);
+  vertical-align: top;
+  line-height: 1.55;
+  color: var(--grey-600);
+}
+
+.comp-table tbody tr:nth-child(odd) td { background: var(--grey-50); }
+.comp-table tbody tr:hover td { background: var(--blue-pale); }
+
+/* INTEGRATED FRAMEWORK */
+.framework-stack {
+  margin: 28px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.fw-layer {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  min-height: 80px;
+  overflow: hidden;
+}
+
+.fw-label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px 20px;
+}
+
+.fw-label-num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.fw-label-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.fw-content {
+  padding: 16px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.fw-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 2px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.fw-desc {
+  width: 100%;
+  font-size: 13px;
+  line-height: 1.55;
+  margin-top: 8px;
+}
+
+/* Layer colors */
+.fw-layer-0 .fw-label { background: #1A1A2E; }
+.fw-layer-0 .fw-label-num { color: var(--blue-light); }
+.fw-layer-0 .fw-label-title { color: var(--white); }
+.fw-layer-0 .fw-content { background: #252540; }
+.fw-layer-0 .fw-tag { background: rgba(90,184,224,0.2); color: var(--blue-light); }
+.fw-layer-0 .fw-desc { color: rgba(255,255,255,0.5); }
+
+.fw-layer-1 .fw-label { background: var(--navy-light); }
+.fw-layer-1 .fw-label-num { color: var(--blue-light); }
+.fw-layer-1 .fw-label-title { color: var(--white); }
+.fw-layer-1 .fw-content { background: var(--navy-mid); }
+.fw-layer-1 .fw-tag { background: rgba(2,122,177,0.3); color: var(--blue-light); }
+.fw-layer-1 .fw-desc { color: rgba(255,255,255,0.5); }
+
+.fw-layer-2 .fw-label { background: var(--blue); }
+.fw-layer-2 .fw-label-num { color: rgba(255,255,255,0.6); }
+.fw-layer-2 .fw-label-title { color: var(--white); }
+.fw-layer-2 .fw-content { background: #0A5F90; }
+.fw-layer-2 .fw-tag { background: rgba(255,255,255,0.2); color: var(--white); }
+.fw-layer-2 .fw-desc { color: rgba(255,255,255,0.6); }
+
+.fw-layer-3 .fw-label { background: var(--blue-mid); }
+.fw-layer-3 .fw-label-num { color: rgba(255,255,255,0.6); }
+.fw-layer-3 .fw-label-title { color: var(--white); }
+.fw-layer-3 .fw-content { background: #2A9AD2; }
+.fw-layer-3 .fw-tag { background: rgba(255,255,255,0.25); color: var(--white); }
+.fw-layer-3 .fw-desc { color: rgba(255,255,255,0.6); }
+
+.fw-output {
+  background: var(--white);
+  border: 2px solid var(--blue);
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 6px;
+}
+
+.fw-output-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--blue);
+  white-space: nowrap;
+}
+
+.fw-output p {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-style: italic;
+  color: var(--navy);
+  line-height: 1.3;
+}
+
+/* DISCLAIMER */
+.disclaimer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin: 28px 0;
+}
+
+.disclaimer-card {
+  padding: 28px;
+  background: var(--white);
+  border-left: 3px solid var(--blue);
+}
+
+.disclaimer-card h4 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--grey-900);
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.disclaimer-card p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--grey-600);
+}
+
+/* HERO SPECIFICS */
+.hero-authors {
+  display: flex;
+  gap: 32px;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+.hero-author {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.author-name {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--white);
+  letter-spacing: 0.02em;
+}
+
+.author-role {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hero-program {
+  margin-top: 28px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.hero-program-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  background: rgba(2,122,177,0.2);
+  color: var(--blue-light);
+  border: 1px solid rgba(2,122,177,0.3);
+}
+
+/* REFERENCES */
+.ref-list {
+  list-style: none;
+  margin: 20px 0;
+}
+
+.ref-list li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--grey-200);
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--grey-600);
+  padding-left: 20px;
+  position: relative;
+}
+
+.ref-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 20px;
+  width: 8px;
+  height: 1px;
+  background: var(--blue);
+}
+
+.ref-list li a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.ref-list li a:hover { text-decoration: underline; }
+
+/* CONCLUSION CARDS */
+.conclusion-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 3px;
+  margin: 28px 0;
+}
+
+.conclusion-item {
+  display: flex;
+  gap: 24px;
+  padding: 20px 24px;
+  background: rgba(255,255,255,0.04);
+  border-left: 2px solid transparent;
+  transition: all 0.2s ease;
+  align-items: flex-start;
+}
+
+.conclusion-item:hover {
+  background: rgba(255,255,255,0.08);
+  border-left-color: var(--blue-light);
+}
+
+.conclusion-num {
+  font-family: var(--font-mono);
+  font-size: 32px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.1);
+  line-height: 1;
+  min-width: 40px;
+}
+
+.conclusion-text h4 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.conclusion-text p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+}
+
+/* PRACTICAL APPLICATION */
+.app-example {
+  background: var(--grey-50);
+  border: 1px solid var(--grey-200);
+  padding: 28px;
+  margin: 24px 0;
+}
+
+.app-tag {
+  display: inline-flex;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  margin-bottom: 16px;
+  border-radius: 2px;
+}
+
+.app-tag.analysis { background: var(--blue-pale); color: var(--blue); }
+.app-tag.redesign { background: #D4EAD7; color: var(--accent-green); }
+.app-tag.result { background: var(--navy); color: var(--white); }
+
+.app-row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--grey-200);
+  align-items: baseline;
+}
+
+.app-key {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--blue);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.app-val {
+  font-size: 14px;
+  color: var(--grey-700, #374151);
+  line-height: 1.55;
+}
+
+.app-upgrade {
+  margin-top: 20px;
+  padding: 20px;
+  background: var(--navy);
+  color: var(--white);
+}
+
+.app-upgrade h4 {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--blue-light);
+  margin-bottom: 12px;
+}
+
+.upgrade-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.utag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 12px;
+  background: rgba(2,122,177,0.25);
+  color: var(--blue-light);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* SCROLL REVEAL */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* SCROLL INDICATOR */
+.scroll-hint {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.35;
+}
+
+.scroll-hint span {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.scroll-arrow {
+  width: 16px;
+  height: 28px;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 10px;
+  position: relative;
+}
+
+.scroll-arrow::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--white);
+  border-radius: 50%;
+  left: 50%;
+  top: 4px;
+  transform: translateX(-50%);
+  animation: scrollBounce 1.5s infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { top: 4px; opacity: 1; }
+  50% { top: 16px; opacity: 0.3; }
+}
+
+/* HERO GEOMETRIC DECORATION */
+.hero-deco {
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 480px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-deco-inner {
+  position: absolute;
+  top: 50%;
+  right: -100px;
+  transform: translateY(-50%);
+  width: 560px;
+  height: 560px;
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 50%;
+}
+
+.hero-deco-inner::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 380px;
+  height: 380px;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 50%;
+}
+
+.hero-deco-inner::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  border: 1px solid rgba(2,122,177,0.2);
+  border-radius: 50%;
+}
+
+/* ADDIE FLOW */
+.addie-flow {
+  display: flex;
+  gap: 0;
+  margin: 28px 0;
+  align-items: stretch;
+}
+
+.addie-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.addie-step + .addie-step::before {
+  content: '→';
+  position: absolute;
+  left: -12px;
+  top: 30px;
+  font-size: 18px;
+  color: var(--blue-light);
+  z-index: 2;
+}
+
+.addie-header {
+  background: var(--navy-light);
+  padding: 14px 16px;
+  text-align: center;
+  border-bottom: 3px solid var(--blue);
+}
+
+.addie-letter {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--blue-light);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.addie-name {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+
+.addie-body {
+  flex: 1;
+  background: var(--navy-mid);
+  padding: 14px 16px;
+}
+
+.addie-body p {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.5;
+}
+
+/* ENGELMANN TABLE */
+.engelmann-list {
+  list-style: none;
+  margin: 16px 0;
+}
+
+.engelmann-list li {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  align-items: flex-start;
+  font-size: 13.5px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.5;
+}
+
+.engelmann-list li .e-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--blue-light);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+/* TECH CONTEXT CARDS */
+.context-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.context-card {
+  padding: 20px 22px;
+  background: rgba(255,255,255,0.05);
+  border-left: 2px solid var(--blue-light);
+}
+
+.context-card h5 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 6px;
+  letter-spacing: 0.03em;
+}
+
+.context-card p {
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.55;
+}
+
+/* PRINT / SCROLL CONTAINER FIXES */
+@media (max-width: 1200px) {
+  section { padding: 60px 60px; }
+  #sidebar { right: 16px; }
+}
+
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<nav id="sidebar">
+  <div class="nav-item active" data-target="cover">
+    <span class="nav-label">Titlu</span>
+    <div class="nav-dot"></div>
+  </div>
+  <div class="nav-item" data-target="disclaimer">
+    <span class="nav-label">Relevanța</span>
+    <div class="nav-dot"></div>
+  </div>
+  <div class="nav-item" data-target="context">
+    <span class="nav-label">Context</span>
+    <div class="nav-dot"></div>
+  </div>
+  <div class="nav-item" data-target="definitie">
+    <span class="nav-label">Definiție</span>
+    <div class="nav-dot"></div>
+  </div>
+  <div class="nav-item" data-target="sixe">
+    <span class="nav-label">Modelul 6E.5</span>
+    <div class="nav-dot"></div>
+  </div>
+  <div class="nav-item" data-target="addie">
+    <span class="nav-label">ADDIE</span>
+    <div class="nav-dot"></div>
+  </div>
+  <div class="nav-item" data-target="principii">
+    <span class="nav-label">Principii</span>
+    <div class="nav-dot"></div>
+  </div>
+  <div class="nav-item" data-target="gagne">
+    <span class="nav-label">Gagné</span>
+    <div class="nav-dot"></div>
+  </div>
+  <div class="nav-item" data-target="tpack">
+    <span class="nav-label">TPACK</span>
+    <div class="nav-dot"></div>
+  </div>
+  <div class="nav-item" data-target="samr">
+    <span class="nav-label">SAMR</span>
+    <div class="nav-dot"></div>
+  </div>
+  <div class="nav-item" data-target="picrat">
+    <span class="nav-label">PIC-RAT</span>
+    <div class="nav-dot"></div>
+  </div>
+  <div class="nav-item" data-target="cadru">
+    <span class="nav-label">Cadrul Integrat</span>
+    <div class="nav-dot"></div>
+  </div>
+  <div class="nav-item" data-target="aplicatie">
+    <span class="nav-label">Aplicație</span>
+    <div class="nav-dot"></div>
+  </div>
+  <div class="nav-item" data-target="concluzii">
+    <span class="nav-label">Concluzii</span>
+    <div class="nav-dot"></div>
+  </div>
+  <div class="nav-item" data-target="referinte">
+    <span class="nav-label">Referințe</span>
+    <div class="nav-dot"></div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+  COVER
+═══════════════════════════════════════════ -->
+<section id="cover" class="bg-navy">
+  <div class="hero-deco"><div class="hero-deco-inner"></div></div>
+  <div class="bg-number">DI</div>
+  <div class="section-inner">
+    <div class="section-label reveal">
+      <span class="section-label-line"></span>
+      <span class="section-label-text">Management și Leadership în Organizația Școlară · DPPD</span>
+    </div>
+
+    <h1 class="display-title reveal reveal-delay-1">
+      Designul de instruire<br>
+      ca fundament al<br>
+      <em>școlii viitorului</em>
+    </h1>
+
+    <p class="lead reveal reveal-delay-2" style="margin-top: 28px;">
+      Un cadru integrat care aliniază modelele 6E, Gagné adaptat, TPACK și SAMR
+      într-un singur flux operațional - pentru o lecție concepută ca experiență
+      autentică de învățare, orientată spre competențe și transfer real.
+    </p>
+
+    <div class="hero-program reveal reveal-delay-3">
+      <div class="hero-program-badge">Modul psihopedagogic</div>
+      <div class="hero-program-badge">Universitatea de Vest din Timișoara</div>
+    </div>
+
+    <div class="hero-authors reveal reveal-delay-4">
+      <div class="hero-author">
+        <span class="author-name">Andrei Tufiș</span>
+        <span class="author-role">Prezentator</span>
+      </div>
+      <div class="hero-author">
+        <span class="author-name">Denisa Paul</span>
+        <span class="author-role">Prezentator</span>
+      </div>
+      <div class="hero-author">
+        <span class="author-name">Adrian Tudosi</span>
+        <span class="author-role">Prezentator</span>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-arrow"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  01 - RELEVANȚA DIN PERSPECTIVA DOMENIULUI
+═══════════════════════════════════════════ -->
+<section id="disclaimer" class="bg-light">
+  <div class="bg-number">01</div>
+  <div class="section-inner">
+    <div class="section-label reveal">
+      <span class="section-label-line"></span>
+      <span class="section-label-text">01 - Perspectivă disciplinară</span>
+    </div>
+
+    <h2 class="section-title reveal reveal-delay-1">
+      De ce contează designul de instruire<br>din perspectiva Științelor Politice,<br>a Relațiilor Internaționale și a Studiilor de Securitate?
+    </h2>
+
+    <p class="lead reveal reveal-delay-2" style="margin-top: 16px; margin-bottom: 28px;">
+      Formarea noastră profesională se desfășoară în domenii aparent îndepărtate de sala de clasă.
+      Și totuși, educația nu este o problemă a pedagogilor - ci o problemă de <strong style="color: var(--navy);">stat, de securitate și de leadership instituțional.</strong>
+    </p>
+
+    <div class="disclaimer-grid reveal reveal-delay-2">
+      <div class="disclaimer-card">
+        <h4>Educația ca instrument al securității naționale</h4>
+        <p>Sistemele educaționale bine proiectate produc cetățeni critici, rezistenți la manipulare și capabili de participare democratică activă. Designul de instruire nu este o problemă tehnică - este o problemă de securitate a statului pe termen lung. Un elev care nu a învățat să gândească critic este vulnerabil la dezinformare, extremism și radicalizare.</p>
+      </div>
+      <div class="disclaimer-card">
+        <h4>Leadership instituțional și reforma sistemului</h4>
+        <p>Managerii instituțiilor educaționale - directori, inspectori, decidenți de politici - trebuie să înțeleagă ce se întâmplă în sala de clasă. Fără cunoașterea modelelor de design instrucțional, reformele educaționale rămân la nivel declarativ. Schimbarea reală înseamnă schimbarea modului în care se proiectează lecția.</p>
+      </div>
+      <div class="disclaimer-card">
+        <h4>Capitalul uman și competitivitatea națională</h4>
+        <p>Diferența de performanță între România și media UE la testele PISA, PIRLS și TIMSS nu este o statistică abstractă - este un indicator al competitivității economice și al capacității statului de a produce valoare adăugată prin resursele umane. Proiectarea sistematică a lecției este un factor de producție național.</p>
+      </div>
+      <div class="disclaimer-card">
+        <h4>Advocacy și politici bazate pe dovezi</h4>
+        <p>Ca absolvenți de Științe Politice, avem responsabilitatea de a promova politici educaționale bazate pe dovezi empirice. Designul de instruire oferă exact acel cadru sistematic și verificabil pe care orice politică publică eficientă trebuie să îl aibă la bază.</p>
+      </div>
+    </div>
+
+    <div class="callout reveal reveal-delay-3">
+      <p>„Cel mai eficient sistem de securitate națională este un sistem educațional excelent. Cetățenii care știu să gândească critic nu pot fi ușor manipulați, exploatați sau radicalizați."</p>
+      <div class="source">- perspectiva autorilor</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  02 - CONTEXT: ROMÂNIA ÎN CONTEXT EUROPEAN
+═══════════════════════════════════════════ -->
+<section id="context" class="bg-navy">
+  <div class="bg-number">02</div>
+  <div class="section-inner">
+    <div class="section-label reveal">
+      <span class="section-label-line"></span>
+      <span class="section-label-text">02 - Context</span>
+    </div>
+
+    <h2 class="section-title reveal reveal-delay-1">Declarativ vs. Real.<br>România în context european.</h2>
+
+    <div class="stat-grid reveal reveal-delay-2">
+      <div class="stat-card">
+        <div class="stat-number">~48%</div>
+        <div class="stat-label">PISA 2022 - România</div>
+        <div class="stat-desc">Dintre elevii de 15 ani nu ating nivelul minim de competențe la citire - față de 26% media UE</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">TALIS</div>
+        <div class="stat-label">2013 & 2018 - Paradoxul</div>
+        <div class="stat-desc">Profesorii români declară că proiectează la fel de mult ca omologii lor europeni - dar rezultatele elevilor spun altceva</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">RO ≪ UE</div>
+        <div class="stat-label">PIRLS & TIMSS</div>
+        <div class="stat-desc">La fiecare ciclu de testare internațională, media României rămâne semnificativ sub media europeană la toate disciplinele</div>
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <h3 class="sub-title reveal reveal-delay-2" style="margin-bottom: 16px;">Mituri și realități despre proiectarea sistematică</h3>
+
+    <div class="myth-grid reveal reveal-delay-3">
+      <div class="myth-col">
+        <div class="myth-col-header myth">Mituri frecvente</div>
+        <div class="myth-item">Proiectarea sistematică este prea <strong>rigidă</strong> și nu permite adaptarea la nevoile individuale ale elevilor.</div>
+        <div class="myth-item">Proiectarea detaliată a lecțiilor <strong>consumă prea mult timp</strong> și nu este practică.</div>
+        <div class="myth-item">Utilizarea tehnologiilor moderne în proiectarea instruirii este <strong>complicată</strong> și nu aduce beneficii semnificative.</div>
+        <div class="myth-item">Proiectarea sistematică este utilă <strong>doar pentru profesorii începători</strong>; cei experimentați nu au nevoie de ea.</div>
+      </div>
+      <div class="myth-col" style="background: var(--navy-mid);">
+        <div class="myth-col-header reality">Realitatea</div>
+        <div class="reality-item">Proiectarea sistematică oferă <strong>structura</strong> în interiorul căreia diferențierea devine posibilă - nu o limitează.</div>
+        <div class="reality-item">Cercetările arată că proiectarea <strong>reduce</strong> improvizația inutilă și crește eficiența - economisind timp real.</div>
+        <div class="reality-item">Nu facem proiectare sistematică bazată pe modele de design de instruire! <strong>(Ilie, 2014; Ilie și colab., 2016; Iucu, 2008)</strong></div>
+        <div class="reality-item">Profesorii experimentați care proiectează sistematic obțin <strong>rezultate mai bune</strong> și au o satisfacție profesională mai ridicată (Stockard et al., 2018).</div>
+      </div>
+    </div>
+
+    <div class="callout reveal reveal-delay-4">
+      <p>„Proiectăm la fel de mult ca profesorii din UE - declarativ (TALIS, 2013, 2018). Dar rezultatele de la PISA, PIRLS și TIMSS arată că media României rămâne mult sub media europeană."</p>
+      <div class="source">- Ilie, 2014 · Iucu, 2008 · TALIS, 2018</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  03 - CE ESTE DESIGNUL DE INSTRUIRE?
+═══════════════════════════════════════════ -->
+<section id="definitie" class="bg-white">
+  <div class="bg-number">03</div>
+  <div class="section-inner">
+    <div class="section-label reveal">
+      <span class="section-label-line"></span>
+      <span class="section-label-text">03 - Definiție și concepte fundamentale</span>
+    </div>
+
+    <h2 class="section-title reveal reveal-delay-1">Ce este designul de instruire?</h2>
+
+    <div class="two-col reveal reveal-delay-2">
+      <div>
+        <div class="callout">
+          <p>„Un proces sistematic și reflexiv de translatare a principiilor învățării și instruirii în planuri pentru elaborarea de materiale de instruire, activități, informații, resurse și evaluare."</p>
+          <div class="source">Smith & Ragan, 2012, p. 4</div>
+        </div>
+
+        <div class="callout" style="margin-top: 16px;">
+          <p>Instruirea = „set deliberat de aranjamente ale condițiilor învățării pentru a promova atingerea unui scop vizat/propus."</p>
+          <div class="source">Driscoll, 2000, p. 345</div>
+        </div>
+
+        <div class="callout" style="margin-top: 16px;">
+          <p>„Designul de instruire = proces sistemic de creare + elaborare + dezvoltare + implementare și evaluare. Scopul: îmbunătățirea substanțială a învățării."</p>
+          <div class="source">Reiser & Dempsey, 2007</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card-grid col-1" style="margin-top: 0;">
+          <div class="content-card">
+            <div class="card-num">Design / Proiectare</div>
+            <h4>Proces de luare a deciziilor</h4>
+            <p>Ghidat de obiective clare, cu resurse limitate, centrat pe experiențele educabililor, plasat într-un context specific și plin de creativitate și inovație. Scopul: rezolvarea de probleme și crearea de ceva nou.</p>
+          </div>
+          <div class="content-card" style="margin-top: 12px;">
+            <div class="card-num">Domeniu fundamental</div>
+            <h4>Designul de Instruire - Domeniu al Științelor Educației</h4>
+            <p>Asigură experiențe educaționale eficiente, autentice și relevante. Structurează și optimizează procesele de predare-învățare. Generează profesii emergente: designer de instruire, specialist eLearning, expert în pedagogii alternative.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <h3 class="sub-title reveal reveal-delay-3" style="margin-bottom: 16px;">Ce ne spun studiile despre proiectare?</h3>
+
+    <div class="card-grid col-3 reveal reveal-delay-3">
+      <div class="content-card">
+        <div class="card-num">Stockard et al., 2018</div>
+        <h4>Impact direct</h4>
+        <p>Proiectarea sistematică are impact direct asupra eficienței predării și rezultatelor elevilor - confirmat printr-o meta-analiză pe jumătate de secol de cercetare.</p>
+      </div>
+      <div class="content-card">
+        <div class="card-num">Schneider & Preckel, 2017</div>
+        <h4>Performanțe universitare</h4>
+        <p>O proiectare minuțioasă a activităților didactice la nivel universitar contribuie semnificativ la îmbunătățirea performanțelor educabililor.</p>
+      </div>
+      <div class="content-card">
+        <div class="card-num">Consecințe practice</div>
+        <h4>Coerență și adaptare</h4>
+        <p>Contribuie la structura logică a lecției, elimină improvizația inutilă, asigură un proces de învățare coerent adaptat nevoilor specifice ale elevilor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  04 - MODELUL 6E.5
+═══════════════════════════════════════════ -->
+<section id="sixe" class="bg-light">
+  <div class="bg-number">04</div>
+  <div class="section-inner">
+    <div class="section-label reveal">
+      <span class="section-label-line"></span>
+      <span class="section-label-text">04 - Modelul mereologic de design al instruirii</span>
+    </div>
+
+    <h2 class="section-title reveal reveal-delay-1">Modelul 6E.5 <span style="font-size: 0.55em; font-style: italic; color: var(--grey-600);">(Ilie, 2020)</span></h2>
+
+    <p class="lead reveal reveal-delay-2">
+      Un model sistemic care identifică cele șase elemente interdependente ale oricărei activități de instruire - de la programul de studiu până la lecție. Fiecare element influențează și este influențat de toate celelalte.
+    </p>
+
+    <div class="sixe-grid reveal reveal-delay-2" style="margin-top: 28px;">
+      <div class="sixe-card">
+        <div class="sixe-label">Element 01</div>
+        <div class="sixe-title">Analiza situației educaționale</div>
+        <div class="sixe-desc">Ce cunoștințe (declarative și procedurale) au elevii? Există elevi diferiți de media clasei?</div>
+      </div>
+      <div class="sixe-card center-card">
+        <div class="sixe-label">Centrul modelului</div>
+        <div class="sixe-title" style="font-size: 26px;">Designul procesului de instruire</div>
+        <div class="sixe-desc" style="margin-top: 8px;">Toate cele 6 elemente se articulează în jurul conceptului de proiectare sistematică a procesului didactic</div>
+      </div>
+      <div class="sixe-card">
+        <div class="sixe-label">Element 02</div>
+        <div class="sixe-title">Conținutul</div>
+        <div class="sixe-desc">Cunoștințele declarative + procedurale abordate în procesul de instruire pentru realizarea finalităților propuse.</div>
+      </div>
+      <div class="sixe-card">
+        <div class="sixe-label">Element 03</div>
+        <div class="sixe-title">Mod de evaluare</div>
+        <div class="sixe-desc">Strategii de evaluare (metode + tehnici) corelate cu obiectivele și conținuturile proiectate.</div>
+      </div>
+      <div class="sixe-card" style="grid-column: 2;">
+        <div class="sixe-label">Element 04</div>
+        <div class="sixe-title">Finalități</div>
+        <div class="sixe-desc">Competențe generale/specifice, rezultate și obiective ale învățării, derivate din programa școlară.</div>
+      </div>
+      <div class="sixe-card">
+        <div class="sixe-label">Element 05</div>
+        <div class="sixe-title">Mod de predare</div>
+        <div class="sixe-desc">Strategii didactice (metode, procedee, mijloace, forme de organizare) alese în funcție de conținut și elevi.</div>
+      </div>
+      <div class="sixe-card" style="grid-column: 1; grid-row: 3;">
+        <div class="sixe-label">Element 06</div>
+        <div class="sixe-title">Timp</div>
+        <div class="sixe-desc">Volumul de timp disponibil: oră, ore, săptămână, unitate de învățare, modul etc.</div>
+      </div>
+    </div>
+
+    <div class="callout reveal reveal-delay-3" style="margin-top: 28px;">
+      <p>„Modelul 6E.5 nu este un șablon - este o hartă a deciziilor pe care un profesor le ia înainte, în timpul și după o activitate de instruire. Aplicabil de la programa de studiu până la o singură lecție."</p>
+      <div class="source">Ilie, M. D. (2020). Modelul mereologic de design al instruirii, 6E.5</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  05 - MODELUL ADDIE
+═══════════════════════════════════════════ -->
+<section id="addie" class="bg-navy">
+  <div class="bg-number">05</div>
+  <div class="section-inner">
+    <div class="section-label reveal">
+      <span class="section-label-line"></span>
+      <span class="section-label-text">05 - Modele de design al instruirii</span>
+    </div>
+
+    <h2 class="section-title reveal reveal-delay-1">Modelul ADDIE</h2>
+
+    <p class="lead reveal reveal-delay-2">
+      Cel mai utilizat model de design instrucțional la nivel global. Un proces ciclic și iterativ
+      care ghidează proiectarea sistematică a oricărei activități de predare-învățare-evaluare.
+    </p>
+
+    <div class="addie-flow reveal reveal-delay-3">
+      <div class="addie-step">
+        <div class="addie-header">
+          <div class="addie-letter">A</div>
+          <div class="addie-name">Analiză</div>
+        </div>
+        <div class="addie-body">
+          <p>Cine, ce, când, unde și de ce? Cum putem îmbunătăți situația și atinge scopurile prin activitățile de predare-învățare-evaluare?</p>
+        </div>
+      </div>
+      <div class="addie-step">
+        <div class="addie-header">
+          <div class="addie-letter">D</div>
+          <div class="addie-name">Design</div>
+        </div>
+        <div class="addie-body">
+          <p>Luarea unor decizii pe baza datelor obținute în etapa de analiză. Ce obiective? Ce conținuturi? Ce strategii? Ce evaluare?</p>
+        </div>
+      </div>
+      <div class="addie-step">
+        <div class="addie-header">
+          <div class="addie-letter">D</div>
+          <div class="addie-name">Dezvoltare</div>
+        </div>
+        <div class="addie-body">
+          <p>Elaborarea/crearea unităților de învățare/lecțiilor. Materialele didactice, sarcinile de învățare, instrumentele de evaluare.</p>
+        </div>
+      </div>
+      <div class="addie-step">
+        <div class="addie-header">
+          <div class="addie-letter">I</div>
+          <div class="addie-name">Implementare</div>
+        </div>
+        <div class="addie-body">
+          <p>Punerea în aplicare a demersurilor proiectate. Interacțiunea reală cu elevii conform planului construit.</p>
+        </div>
+      </div>
+      <div class="addie-step">
+        <div class="addie-header">
+          <div class="addie-letter">E</div>
+          <div class="addie-name">Evaluare</div>
+        </div>
+        <div class="addie-body">
+          <p>Integrare feedback pe tot parcursul activităților de predare-învățare-evaluare. Ciclu continuu de îmbunătățire.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="two-col reveal reveal-delay-4" style="margin-top: 28px;">
+      <div>
+        <h3 class="sub-title" style="margin-bottom: 14px; font-size: 24px;">De ce ADDIE rămâne relevant?</h3>
+        <ul class="numbered-list">
+          <li><span class="list-num">01</span>Oferă un cadru flexibil, aplicabil la orice nivel - de la o lecție de 50 de minute la un program de formare</li>
+          <li><span class="list-num">02</span>Forțează profesorul să ANALIZEZE înainte de a proiecta - nu invers</li>
+          <li><span class="list-num">03</span>Evaluarea nu este un pas final - este integrată în tot ciclul</li>
+          <li><span class="list-num">04</span>Compatibil cu toate celelalte modele (6E.5, Gagné, TPACK, SAMR)</li>
+        </ul>
+      </div>
+      <div>
+        <div class="callout">
+          <p>„Unde se aplică designul de instruire? Programe de formare, discipline (opțional), unitate de învățare, modul, proiectarea lecției - în ansamblu."</p>
+          <div class="source">Reiser & Dempsey, 2007</div>
+        </div>
+        <p class="body-text" style="margin-top: 16px; color: rgba(255,255,255,0.55); font-size: 13.5px;">Modelul ADDIE nu impune o ordine rigidă - în practică, etapele se suprapun și profesorul navighează între ele în funcție de nevoile concrete ale clasei și ale conținutului.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  06 - PRINCIPII ALE ÎNVĂȚĂRII
+═══════════════════════════════════════════ -->
+<section id="principii" class="bg-white">
+  <div class="bg-number">06</div>
+  <div class="section-inner">
+    <div class="section-label reveal">
+      <span class="section-label-line"></span>
+      <span class="section-label-text">06 - Principii ale procesului de învățare</span>
+    </div>
+
+    <h2 class="section-title reveal reveal-delay-1">Cum învață elevii? <span style="font-style: italic; color: var(--grey-600); font-size: 0.6em;">Hattie & Yates, 2013</span></h2>
+
+    <p class="lead reveal reveal-delay-2">
+      Orice proiectare didactică serioasă trebuie să plece de la înțelegerea mecanismelor
+      cognitive ale învățării. John Hattie și Gregory Yates sintetizează cele mai solide
+      dovezi empirice despre cum funcționează achiziția și retenția cunoașterii.
+    </p>
+
+    <div class="two-col reveal reveal-delay-3" style="margin-top: 28px;">
+      <div>
+        <h3 class="sub-title" style="font-size: 24px; margin-bottom: 16px;">
+          <span style="color: var(--blue); font-family: var(--font-mono); font-size: 16px; display: block; margin-bottom: 4px;">PRINCIPII ALE ACHIZIȚIEI</span>
+          Cum se dobândesc cunoștințele?
+        </h3>
+
+        <div class="principles-grid">
+          <div class="principle-item">
+            <div class="principle-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
+              </svg>
+            </div>
+            <div class="principle-text">
+              <h5>Timp, efort și motivație</h5>
+              <p>Învățarea necesită angajament activ și timp - nu se produce pasiv</p>
+            </div>
+          </div>
+          <div class="principle-item">
+            <div class="principle-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+              </svg>
+            </div>
+            <div class="principle-text">
+              <h5>Intervale scurte de concentrare</h5>
+              <p>Capacitatea de atenție susținută este limitată - sarcini variate sunt esențiale</p>
+            </div>
+          </div>
+          <div class="principle-item">
+            <div class="principle-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+              </svg>
+            </div>
+            <div class="principle-text">
+              <h5>Cunoștințe anterioare puternice</h5>
+              <p>Ce știe deja elevul influențează masiv ce va putea învăța</p>
+            </div>
+          </div>
+          <div class="principle-item">
+            <div class="principle-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+                <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+              </svg>
+            </div>
+            <div class="principle-text">
+              <h5>Practică distribuită</h5>
+              <p>Sesiuni de practică distribuite în timp sunt mai eficiente decât blocuri intensive</p>
+            </div>
+          </div>
+          <div class="principle-item">
+            <div class="principle-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M2 12h4M18 12h4"/>
+              </svg>
+            </div>
+            <div class="principle-text">
+              <h5>Stimuli simultani multipli</h5>
+              <p>Mintea răspunde bine la informații prezentate pe canale multiple</p>
+            </div>
+          </div>
+          <div class="principle-item">
+            <div class="principle-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                <circle cx="12" cy="17" r="1" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="principle-text">
+              <h5>Minte activă</h5>
+              <p>Pentru a învăța, mintea trebuie să fie activă - nu simplu receptor pasiv</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="sub-title" style="font-size: 24px; margin-bottom: 16px;">
+          <span style="color: var(--blue); font-family: var(--font-mono); font-size: 16px; display: block; margin-bottom: 4px;">PRINCIPII ALE RETENȚIEI</span>
+          Cum se păstrează cunoștințele?
+        </h3>
+
+        <div class="principles-grid">
+          <div class="principle-item">
+            <div class="principle-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+              </svg>
+            </div>
+            <div class="principle-text">
+              <h5>A recunoaște vs. a aminti</h5>
+              <p>Recunoașterea este facilă; reproducerea activă a informației este grea și necesită exersare</p>
+            </div>
+          </div>
+          <div class="principle-item">
+            <div class="principle-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </div>
+            <div class="principle-text">
+              <h5>Efectul de primacy-recency</h5>
+              <p>Primele și ultimele informații dintr-o lecție sunt reținute mai ușor</p>
+            </div>
+          </div>
+          <div class="principle-item">
+            <div class="principle-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="2" x2="12" y2="6"/>
+                <line x1="12" y1="18" x2="12" y2="22"/>
+                <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/>
+                <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/>
+              </svg>
+            </div>
+            <div class="principle-text">
+              <h5>Rate diferite de uitare</h5>
+              <p>Nu toate informațiile se uită în același ritm - consolidarea selectivă este crucială</p>
+            </div>
+          </div>
+          <div class="principle-item">
+            <div class="principle-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+            </div>
+            <div class="principle-text">
+              <h5>Atenția în momentul învățării</h5>
+              <p>Memoria depinde direct de focalizarea atenției la momentul codificării informației</p>
+            </div>
+          </div>
+          <div class="principle-item">
+            <div class="principle-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.36"/>
+              </svg>
+            </div>
+            <div class="principle-text">
+              <h5>Informația uitată poate ajuta</h5>
+              <p>Re-învățarea este mai rapidă decât prima învățare - urme mnezice persistă</p>
+            </div>
+          </div>
+          <div class="principle-item">
+            <div class="principle-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+              </svg>
+            </div>
+            <div class="principle-text">
+              <h5>Interferențe mnezice</h5>
+              <p>Informații similare se interferează în memorie - spațierea și diferențierea sunt esențiale</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  07 - MODELE DE INSTRUIRE: GAGNÉ
+═══════════════════════════════════════════ -->
+<section id="gagne" class="bg-light">
+  <div class="bg-number">07</div>
+  <div class="section-inner">
+    <div class="section-label reveal">
+      <span class="section-label-line"></span>
+      <span class="section-label-text">07 - Modele de instruire</span>
+    </div>
+
+    <h2 class="section-title reveal reveal-delay-1">Modele de instruire:<br>Gagné, Gagné Adaptat & Engelmann</h2>
+
+    <p class="lead reveal reveal-delay-2">
+      Modelele de instruire răspund la întrebarea fundamentală a pedagogiei:
+      <em style="color: var(--navy);">cum organizăm experiența de învățare?</em>
+      Robert Gagné - „Părintele Design-ului de Instruire" - a propus un model
+      bazat pe procesualitatea cognitivă a învățării.
+    </p>
+
+    <div class="two-col reveal reveal-delay-3" style="margin-top: 28px; align-items: start;">
+      <div>
+        <h3 class="sub-title" style="font-size: 22px; margin-bottom: 14px;">
+          Gagné Adaptat - 11 Evenimente
+          <span style="font-size: 14px; font-style: italic; color: var(--grey-600); display: block; margin-top: 4px;">(Ilie și colab., 2014) - Model recomandat pentru contextul românesc</span>
+        </h3>
+
+        <div class="gagne-grid">
+          <div class="gagne-item highlighted">
+            <div class="gagne-num">01</div>
+            <div class="gagne-content">
+              <div class="gagne-title">Organizarea învățării</div>
+              <div class="gagne-desc">Pregătirea mediului și a condițiilor optime pentru instruire</div>
+            </div>
+          </div>
+          <div class="gagne-item highlighted">
+            <div class="gagne-num">02</div>
+            <div class="gagne-content">
+              <div class="gagne-title">Captarea atenției</div>
+              <div class="gagne-desc">Stimul inițial care focalizează atenția elevilor asupra conținutului</div>
+            </div>
+          </div>
+          <div class="gagne-item highlighted">
+            <div class="gagne-num">03</div>
+            <div class="gagne-content">
+              <div class="gagne-title">Anunțarea subiectului și obiectivelor</div>
+              <div class="gagne-desc">Comunicarea explicită a ceea ce va fi învățat și a scopului</div>
+            </div>
+          </div>
+          <div class="gagne-item">
+            <div class="gagne-num">04</div>
+            <div class="gagne-content">
+              <div class="gagne-title">Reactualizarea cunoștințelor anterioare</div>
+              <div class="gagne-desc">Activarea schemelor cognitive existente ca ancorare a noilor informații</div>
+            </div>
+          </div>
+          <div class="gagne-item">
+            <div class="gagne-num">05</div>
+            <div class="gagne-content">
+              <div class="gagne-title">Prezentarea noului conținut</div>
+              <div class="gagne-desc">Transmiterea informațiilor noi în formă accesibilă și structurată</div>
+            </div>
+          </div>
+          <div class="gagne-item">
+            <div class="gagne-num">06</div>
+            <div class="gagne-content">
+              <div class="gagne-title">Dirijarea învățării</div>
+              <div class="gagne-desc">Ghidarea procesului de înțelegere și construire a cunoașterii</div>
+            </div>
+          </div>
+          <div class="gagne-item">
+            <div class="gagne-num">07</div>
+            <div class="gagne-content">
+              <div class="gagne-title">Asigurarea performanței</div>
+              <div class="gagne-desc">Crearea ocaziei ca elevii să demonstreze ce au învățat</div>
+            </div>
+          </div>
+          <div class="gagne-item">
+            <div class="gagne-num">08</div>
+            <div class="gagne-content">
+              <div class="gagne-title">Asigurarea feedback-ului</div>
+              <div class="gagne-desc">Informare corectivă și confirmativă continuă</div>
+            </div>
+          </div>
+          <div class="gagne-item highlighted">
+            <div class="gagne-num">09</div>
+            <div class="gagne-content">
+              <div class="gagne-title">Evaluarea propriu-zisă</div>
+              <div class="gagne-desc">Verificarea formală a atingerii obiectivelor operaționale</div>
+            </div>
+          </div>
+          <div class="gagne-item">
+            <div class="gagne-num">10</div>
+            <div class="gagne-content">
+              <div class="gagne-title">Intensificarea retenției și transferului</div>
+              <div class="gagne-desc">Consolidare, exersare și aplicare în contexte noi</div>
+            </div>
+          </div>
+          <div class="gagne-item highlighted">
+            <div class="gagne-num">11</div>
+            <div class="gagne-content">
+              <div class="gagne-title">Încheierea activității / Aprecieri finale</div>
+              <div class="gagne-desc">Sinteză, metacogniție și tranziție - element specific modelului adaptat</div>
+            </div>
+          </div>
+          <div class="gagne-item" style="background: var(--blue-pale);">
+            <div class="gagne-num" style="color: var(--navy);">*</div>
+            <div class="gagne-content">
+              <div class="gagne-title" style="color: var(--navy);">Evenimentele marcate</div>
+              <div class="gagne-desc">Evenimentele evidențiate (1, 2, 3, 9, 11) sunt considerate obligatorii în orice activitate de instruire (Ilie, 2014)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="sub-title" style="font-size: 22px; margin-bottom: 14px;">
+          Comparație: trei modele de instruire
+        </h3>
+
+        <table class="comp-table">
+          <thead>
+            <tr>
+              <th>Gagné original (1974)</th>
+              <th>Gagné adaptat - Ilie (2014)</th>
+              <th>Engelmann (1980)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Captarea atenției</td>
+              <td>Organizarea învățării **</td>
+              <td rowspan="3">Introducerea de concepte noi pe baza cunoștințelor și abilităților anterioare</td>
+            </tr>
+            <tr>
+              <td>Enunțarea obiectivelor</td>
+              <td>Captarea atenției **</td>
+            </tr>
+            <tr>
+              <td>Reactualizarea cunoștințelor</td>
+              <td>Anunțarea subiectului și obiectivelor **</td>
+            </tr>
+            <tr>
+              <td>Prezentarea materialului stimul</td>
+              <td>Reactualizarea cunoștințelor anterioare</td>
+              <td>Prezentarea: explicarea, demonstrarea, exemple și non-exemple</td>
+            </tr>
+            <tr>
+              <td>Dirijarea învățării</td>
+              <td>Prezentarea noului conținut</td>
+              <td>Sarcini și întrebări pentru educabili</td>
+            </tr>
+            <tr>
+              <td>Asigurarea performanței</td>
+              <td>Dirijarea învățării</td>
+              <td>Feedback de la profesor</td>
+            </tr>
+            <tr>
+              <td>Asigurarea feedback-ului</td>
+              <td>Asigurarea performanței</td>
+              <td rowspan="3">Practică independentă</td>
+            </tr>
+            <tr>
+              <td>Evaluarea performanțelor</td>
+              <td>Asigurarea feedback-ului</td>
+            </tr>
+            <tr>
+              <td>Asigurarea retenției și transferului</td>
+              <td>Evaluarea propriu-zisă **</td>
+            </tr>
+            <tr>
+              <td>-</td>
+              <td>Intensificarea retenției și transferului</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>-</td>
+              <td>Aprecieri finale / Încheiere **</td>
+              <td>-</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p style="font-size: 11px; color: var(--grey-400); margin-top: 8px; line-height: 1.5;">
+          ** Evenimentele marcate cu ** sunt considerate obligatorii în modelul adaptat (Ilie, 2014, p. 781).<br>
+          Nota: Ordinea evenimentelor este aproximativă și variază în funcție de obiective (Gagné & Briggs, 1974, p. 135).
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  08 - TPACK
+═══════════════════════════════════════════ -->
+<section id="tpack" class="bg-navy">
+  <div class="bg-number">08</div>
+  <div class="section-inner">
+    <div class="section-label reveal">
+      <span class="section-label-line"></span>
+      <span class="section-label-text">08 - Modele de integrare a tehnologiei</span>
+    </div>
+
+    <h2 class="section-title reveal reveal-delay-1">TPACK - Cadrul de cunoaștere<br>pentru integrarea tehnologiei</h2>
+
+    <div class="two-col wide-right reveal reveal-delay-2">
+      <div>
+        <p class="body-text" style="margin-bottom: 20px; font-size: 15px;">
+          Modelul <strong style="color: var(--white);">TPACK</strong> (Technological Pedagogical Content Knowledge) ajută profesorii să îmbine
+          <strong style="color: var(--blue-light);">tehnologia</strong>, <strong style="color: var(--blue-light);">pedagogia</strong> și
+          <strong style="color: var(--blue-light);">conținutul disciplinar</strong> pentru a crea lecții eficiente.
+        </p>
+
+        <ul class="numbered-list" style="margin-bottom: 24px;">
+          <li><span class="list-num">CK</span>Cunoștințe de conținut - <em style="color: rgba(255,255,255,0.4);">Ce predăm?</em></li>
+          <li><span class="list-num">PK</span>Cunoștințe pedagogice - <em style="color: rgba(255,255,255,0.4);">Cum predăm?</em></li>
+          <li><span class="list-num">TK</span>Cunoștințe tehnologice - <em style="color: rgba(255,255,255,0.4);">Cu ce tehnologii predăm?</em></li>
+          <li><span class="list-num">PCK</span>Cum conținutul modelează pedagogia</li>
+          <li><span class="list-num">TPK</span>Cum tehnologia poate susține pedagogia</li>
+          <li><span class="list-num">TCK</span>Cum tehnologia poate reprezenta conținutul</li>
+          <li><span class="list-num" style="color: var(--blue-light); font-size: 10px;">TPACK</span>Intersecția tuturor - zona optimă de predare cu tehnologie</li>
+        </ul>
+
+        <h3 class="sub-title" style="font-size: 20px; margin-bottom: 14px;">Extins în 2019 - Contextul (XK)</h3>
+
+        <div class="context-card-grid">
+          <div class="context-card">
+            <h5>Accesul la tehnologie</h5>
+            <p>Diferențe între școli cu resurse limitate vs. medii digitale avansate</p>
+          </div>
+          <div class="context-card">
+            <h5>Competențele digitale</h5>
+            <p>Nevoia de formare continuă pentru integrarea eficientă a tehnologiei</p>
+          </div>
+          <div class="context-card">
+            <h5>Nevoile elevilor</h5>
+            <p>Personalizarea prin tehnologii adaptive și inteligență artificială</p>
+          </div>
+          <div class="context-card">
+            <h5>Tendințele educaționale</h5>
+            <p>VR, platforme adaptive, învățare hibridă - tendințe ce redefinesc spațiul didactic</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <div class="tpack-wrapper" style="margin-bottom: 24px;">
+          <div class="tpack-circle circle-tk">TK</div>
+          <div class="tpack-circle circle-pk">PK</div>
+          <div class="tpack-circle circle-ck">CK</div>
+          <div class="tpack-label lbl-tpk">TPK</div>
+          <div class="tpack-label lbl-tck">TCK</div>
+          <div class="tpack-label lbl-pck">PCK</div>
+          <div class="lbl-tpack">TPACK</div>
+        </div>
+
+        <div class="callout" style="margin-top: 0; max-width: 420px;">
+          <p>TPACK nu este o listă de competențe - este o <em>filozofie a integrării</em>. Un profesor TPACK nu întreabă „ce tehnologie folosesc?" ci „cum pot aduce conținutului meu mai multă claritate, profunzime și relevanță cu ajutorul tehnologiei?"</p>
+          <div class="source">- perspectiva autorilor</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  09 - SAMR
+═══════════════════════════════════════════ -->
+<section id="samr" class="bg-white">
+  <div class="bg-number">09</div>
+  <div class="section-inner">
+    <div class="section-label reveal">
+      <span class="section-label-line"></span>
+      <span class="section-label-text">09 - Modele de integrare a tehnologiei</span>
+    </div>
+
+    <h2 class="section-title reveal reveal-delay-1">SAMR - Impactul tehnologiei<br>asupra sarcinii de învățare</h2>
+
+    <p class="lead reveal reveal-delay-2">
+      Dezvoltat de Dr. Ruben Puentedura, modelul SAMR oferă un cadru pentru
+      evaluarea gradului în care tehnologia transformă (sau nu) activitatea didactică.
+      Cheia nu este <em>ce</em> tehnologie folosești - ci <em>ce face</em> acea tehnologie cu sarcina de învățare.
+    </p>
+
+    <div class="two-col wide-left reveal reveal-delay-3" style="margin-top: 24px;">
+      <div>
+        <div class="samr-stack">
+          <div class="samr-divider">Transformă învățarea ↑</div>
+          <div class="samr-level">
+            <div class="samr-badge samr-r" style="background:#0D3A6A;">R</div>
+            <div class="samr-body samr-r" style="background:#0F4580;">
+              <h4>Redefinire</h4>
+              <p>Tehnologia permite crearea unor sarcini de învățare complet noi, imposibile altfel. Nivel maxim de transformare.</p>
+            </div>
+            <div class="samr-tag samr-r" style="background:#0A2A52; color: #5AB8E0;">Bloom: Creare</div>
+          </div>
+          <div class="samr-level">
+            <div class="samr-badge samr-m" style="background:#027AB1;">M</div>
+            <div class="samr-body samr-m" style="background:#0A90D0;">
+              <h4>Modificare</h4>
+              <p>Tehnologia modifică semnificativ sarcina existentă. Activitățile sunt restructurate fundamental.</p>
+            </div>
+            <div class="samr-tag samr-m" style="background:#006A9E; color: #5AB8E0;">Bloom: Evaluare · Analiză</div>
+          </div>
+          <div class="samr-divider">Susține învățarea ↑</div>
+          <div class="samr-level">
+            <div class="samr-badge samr-a">A</div>
+            <div class="samr-body samr-a">
+              <h4 style="color: var(--grey-800);">Augmentare</h4>
+              <p>Tehnologia înlocuiește un instrument clasic, cu îmbunătățiri funcționale. Eficiență crescută, dar sarcina rămâne similară.</p>
+            </div>
+            <div class="samr-tag samr-a" style="color: var(--grey-600);">Bloom: Aplicare</div>
+          </div>
+          <div class="samr-level">
+            <div class="samr-badge samr-s">S</div>
+            <div class="samr-body samr-s">
+              <h4 style="color: var(--grey-800);">Substituție</h4>
+              <p>Tehnologia substituie un instrument clasic, fără modificări funcționale. Schimbare superficială.</p>
+            </div>
+            <div class="samr-tag samr-s" style="color: var(--grey-600);">Bloom: Înțelegere · Rememorare</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="sub-title" style="font-size: 22px; margin-bottom: 16px;">Scopul modelului</h3>
+
+        <ul class="numbered-list" style="margin-bottom: 24px;">
+          <li><span class="list-num">01</span>Evitarea utilizării superficiale a tehnologiei (nivelul S)</li>
+          <li><span class="list-num">02</span>Creșterea gradului de interactivitate și inovație în lecții</li>
+          <li><span class="list-num">03</span>Optimizarea procesului de învățare prin transformarea activităților</li>
+          <li><span class="list-num">04</span>Corelarea nivelului de integrare tehnologică cu nivelul cognitiv vizat (Bloom)</li>
+        </ul>
+
+        <div class="callout">
+          <p>Cheia nu este să urci neapărat până la nivel R în fiecare lecție - ci să nu te mulțumești cu S atunci când A, M sau R sunt posibile și produc <strong>mai multă învățare.</strong></p>
+          <div class="source">- principiu fundamental al modelului SAMR</div>
+        </div>
+
+        <div class="content-card" style="margin-top: 16px; background: var(--navy); border-top-color: var(--blue-light);">
+          <div class="card-num" style="color: var(--blue-light);">Exemplu practic</div>
+          <h4 style="color: var(--white);">Quizizz - nivel Augmentare (A)</h4>
+          <p style="color: rgba(255,255,255,0.55);">Evaluarea tradițională pe hârtie înlocuită cu Quizizz oferă feedback instant și gamificare - îmbunătățiri funcționale clare (A). Dar întrebările și obiectivele rămân aceleași. Nu s-a atins transformarea.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  10 - PIC-RAT
+═══════════════════════════════════════════ -->
+<section id="picrat" class="bg-light">
+  <div class="bg-number">10</div>
+  <div class="section-inner">
+    <div class="section-label reveal">
+      <span class="section-label-line"></span>
+      <span class="section-label-text">10 - Modele de integrare a tehnologiei</span>
+    </div>
+
+    <h2 class="section-title reveal reveal-delay-1">PIC-RAT - Rolul elevului<br>și impactul tehnologiei</h2>
+
+    <p class="lead reveal reveal-delay-2">
+      Modelul PIC-RAT (Kimmons, Graham & West, 2020) evaluează simultan <em>rolul elevului</em>
+      în raport cu tehnologia și <em>impactul tehnologiei</em> asupra practicii didactice.
+      Obiectivul: zona CT - elevul <strong>creează</strong> cu o tehnologie care <strong>transformă</strong>.
+    </p>
+
+    <div class="two-col reveal reveal-delay-3" style="margin-top: 24px; align-items: start;">
+      <div>
+        <div class="card-grid col-1">
+          <div class="content-card">
+            <div class="card-num">Dimensiunea PIC - Rolul elevului</div>
+            <h4>P - Pasiv</h4>
+            <p>Elevul consumă informații. Vizionează, ascultă, citește - fără interacțiune activă cu conținutul digital.</p>
+          </div>
+          <div class="content-card">
+            <h4>I - Interactiv</h4>
+            <p>Elevul interacționează cu tehnologia pentru a înțelege conținutul. Răspunde, explorează, navighează, manipulează.</p>
+          </div>
+          <div class="content-card" style="border-top-color: var(--accent-green);">
+            <h4>C - Creativ</h4>
+            <p>Elevul creează artefacte digitale noi. Produce, construiește, sintetizează - tehnologia devine un instrument de expresie.</p>
+          </div>
+        </div>
+
+        <div class="card-grid col-1" style="margin-top: 16px;">
+          <div class="content-card">
+            <div class="card-num">Dimensiunea RAT - Impactul tehnologiei</div>
+            <h4>R - Reasează (Replaces)</h4>
+            <p>Tehnologia înlocuiește metoda tradițională fără îmbunătățiri semnificative. Schimbare de formă, nu de fond.</p>
+          </div>
+          <div class="content-card">
+            <h4>A - Amplifică</h4>
+            <p>Tehnologia îmbunătățește eficiența lecției, dar nu o schimbă fundamental. Același tip de activitate, mai eficient.</p>
+          </div>
+          <div class="content-card" style="border-top-color: var(--accent-green);">
+            <h4>T - Transformă</h4>
+            <p>Tehnologia permite activități complet noi, imposibile fără ea. Schimbare structurală a procesului didactic.</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="sub-title" style="font-size: 20px; margin-bottom: 16px;">Matricea PIC-RAT</h3>
+
+        <div class="picrat-wrapper">
+          <table class="picrat-table">
+            <thead>
+              <tr>
+                <th style="background: transparent; border-color: transparent;"></th>
+                <th>Reasează (R)</th>
+                <th>Amplifică (A)</th>
+                <th>Transformă (T)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="row-header">Creativ (C)</td>
+                <td class="picrat-cell cell-cr">CR</td>
+                <td class="picrat-cell cell-ca">CA</td>
+                <td class="picrat-cell cell-ct">CT</td>
+              </tr>
+              <tr>
+                <td class="row-header">Interactiv (I)</td>
+                <td class="picrat-cell cell-ir">IR</td>
+                <td class="picrat-cell cell-ia">IA</td>
+                <td class="picrat-cell cell-it">IT</td>
+              </tr>
+              <tr>
+                <td class="row-header">Pasiv (P)</td>
+                <td class="picrat-cell cell-pr">PR</td>
+                <td class="picrat-cell cell-pa">PA</td>
+                <td class="picrat-cell cell-pt">PT</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout" style="margin-top: 16px;">
+          <p>CT - <strong>Creativ + Transformare</strong> - reprezintă zona de maximă valoare a integrării tehnologice. Elevul creează artefacte digitale care nu ar fi posibile fără tehnologie.</p>
+          <div class="source">Kimmons, Graham & West, 2020</div>
+        </div>
+
+        <div class="app-example" style="margin-top: 16px; background: var(--white);">
+          <div class="app-tag analysis">Analiza exemplului Quizizz</div>
+          <div class="app-row">
+            <div class="app-key">PIC</div>
+            <div class="app-val"><strong>I - Interactiv.</strong> Elevii răspund la întrebări, primesc feedback instant.</div>
+          </div>
+          <div class="app-row">
+            <div class="app-key">RAT</div>
+            <div class="app-val"><strong>A - Amplifică.</strong> Gamificare și analiză rapidă a răspunsurilor - îmbunătățire, nu transformare.</div>
+          </div>
+          <div class="app-row" style="border: none;">
+            <div class="app-key">Concluzie</div>
+            <div class="app-val">Activitate IA - <strong>valoroasă, dar nu transformatoare.</strong> Recomandare: elevii să creeze întrebările pentru colegi.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  11 - CADRUL INTEGRAT: ȘCOALA VIITORULUI
+═══════════════════════════════════════════ -->
+<section id="cadru" class="bg-navy">
+  <div class="bg-number">11</div>
+  <div class="section-inner">
+    <div class="section-label reveal">
+      <span class="section-label-line"></span>
+      <span class="section-label-text">11 - Propunere · Contribuție originală</span>
+    </div>
+
+    <h2 class="section-title reveal reveal-delay-1">
+      Cadrul integrat de design instrucțional<br>
+      <em style="color: var(--blue-light);">pentru școala viitorului</em>
+    </h2>
+
+    <p class="lead reveal reveal-delay-2">
+      Elementul de noutate al acestei propuneri constă în alinierea, într-un singur flux
+      operațional, a modelelor 6E.5, Gagné adaptat, TPACK și SAMR. Noutatea nu este
+      introducerea tehnologiei - ci <strong style="color: var(--white);">proiectarea lecției ca experiență de învățare</strong>
+      orientată spre competențe, feedback continuu și transfer în contexte reale.
+    </p>
+
+    <div class="framework-stack reveal reveal-delay-3">
+      <div class="fw-layer fw-layer-0">
+        <div class="fw-label">
+          <div class="fw-label-num">Fundament</div>
+          <div class="fw-label-title">Principii ale Învățării</div>
+        </div>
+        <div class="fw-content">
+          <span class="fw-tag">Achiziție (Hattie & Yates)</span>
+          <span class="fw-tag">Retenție</span>
+          <span class="fw-tag">Atenție activă</span>
+          <span class="fw-tag">Cunoștințe anterioare</span>
+          <span class="fw-tag">Practică distribuită</span>
+          <div class="fw-desc">Orice activitate de instruire pornește de la înțelegerea mecanismelor cognitive reale ale învățării. Fără fundament psihologic, proiectarea rămâne empirică și inconsistentă.</div>
+        </div>
+      </div>
+
+      <div class="fw-layer fw-layer-1">
+        <div class="fw-label">
+          <div class="fw-label-num">Nivel I - Design</div>
+          <div class="fw-label-title">Modelul 6E.5</div>
+        </div>
+        <div class="fw-content">
+          <span class="fw-tag">Analiza situației</span>
+          <span class="fw-tag">Finalități</span>
+          <span class="fw-tag">Conținut</span>
+          <span class="fw-tag">Timp</span>
+          <span class="fw-tag">Mod de predare</span>
+          <span class="fw-tag">Mod de evaluare</span>
+          <div class="fw-desc">Înainte de orice decizie despre tehnologie sau metode, profesorul analizează sistematic cele 6 variabile interdependente ale contextului educațional concret. Ilie (2020).</div>
+        </div>
+      </div>
+
+      <div class="fw-layer fw-layer-2">
+        <div class="fw-label">
+          <div class="fw-label-num">Nivel II - Instruire</div>
+          <div class="fw-label-title">Gagné Adaptat</div>
+        </div>
+        <div class="fw-content">
+          <span class="fw-tag">11 evenimente</span>
+          <span class="fw-tag">Organizare → Captare</span>
+          <span class="fw-tag">Reactualizare → Prezentare</span>
+          <span class="fw-tag">Dirijare → Performanță</span>
+          <span class="fw-tag">Feedback → Evaluare</span>
+          <span class="fw-tag">Retenție → Închidere</span>
+          <div class="fw-desc">Secvența celor 11 evenimente de instruire oferă structura temporală a lecției, asigurând că fiecare moment al procesului cognitiv este tratat. Ilie și colab. (2014).</div>
+        </div>
+      </div>
+
+      <div class="fw-layer fw-layer-3">
+        <div class="fw-label">
+          <div class="fw-label-num">Nivel III - Tehnologie</div>
+          <div class="fw-label-title">TPACK + SAMR + PIC-RAT</div>
+        </div>
+        <div class="fw-content">
+          <span class="fw-tag">TPACK - integrare cunoaștere</span>
+          <span class="fw-tag">SAMR nivel M sau R</span>
+          <span class="fw-tag">PIC-RAT zona CT</span>
+          <span class="fw-tag">Tehnologia ca transformare</span>
+          <div class="fw-desc">Tehnologia este integrată numai atunci când produce transformare reală (SAMR nivelurile M/R) și când elevul creează artefacte digitale (PIC-RAT zona CT). TPACK ghidează coerența între conținut, pedagogie și instrument digital.</div>
+        </div>
+      </div>
+
+      <div class="fw-output reveal reveal-delay-4">
+        <div class="fw-output-label">Output</div>
+        <p>Lecție centrată pe competențe, cu feedback continuu și transfer autentic în contexte reale - utilizând tehnologia doar atunci când produce transformare.</p>
+      </div>
+    </div>
+
+    <div class="hr reveal reveal-delay-4"></div>
+
+    <div class="card-grid col-3 reveal reveal-delay-4">
+      <div class="content-card">
+        <div class="card-num">Inovația propunerii</div>
+        <h4>Alinierea sistemică</h4>
+        <p>Nu un model nou, ci un <em>flux integrat</em> care aliniază modele existente într-o secvență operațională coerentă - de la analiză la evaluare.</p>
+      </div>
+      <div class="content-card">
+        <div class="card-num">Filosofia centrală</div>
+        <h4>Lecția ca experiență</h4>
+        <p>Școala viitorului nu înseamnă mai multă tehnologie - înseamnă mai multă <em>intenție</em> în proiectarea experienței de învățare. Tehnologia vine <em>după</em> design, nu înaintea lui.</p>
+      </div>
+      <div class="content-card">
+        <div class="card-num">Aplicabilitate</div>
+        <h4>Orice disciplină, orice nivel</h4>
+        <p>Cadrul integrat funcționează pentru orice disciplină, orice clasă, orice context - cu sau fără resurse digitale avansate. Adaptabilitate maximă.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  12 - APLICAȚIE PRACTICĂ
+═══════════════════════════════════════════ -->
+<section id="aplicatie" class="bg-white">
+  <div class="bg-number">12</div>
+  <div class="section-inner">
+    <div class="section-label reveal">
+      <span class="section-label-line"></span>
+      <span class="section-label-text">12 - Aplicație practică · Istoria clasei a VIII-a</span>
+    </div>
+
+    <h2 class="section-title reveal reveal-delay-1">Reproiectarea unei lecții de Istorie<br>prin cadrul integrat</h2>
+
+    <p class="lead reveal reveal-delay-2">
+      Clasa a VIII-a · Disciplina: Istorie · Subiectul: Primul Război Mondial
+      (Secvența de lecție: dirijarea învățării)
+    </p>
+
+    <div class="two-col reveal reveal-delay-3" style="margin-top: 24px; align-items: start;">
+      <div>
+        <h3 class="sub-title" style="font-size: 20px; margin-bottom: 14px;">Lecția inițială - Analiza prin SAMR + PIC-RAT</h3>
+
+        <div class="app-example">
+          <div class="app-tag analysis">Descriere</div>
+          <p style="font-size: 13.5px; color: var(--grey-600); line-height: 1.6; margin-bottom: 16px;">
+            Profesorul prezintă o hartă interactivă a Europei din 1914 pe tabla SMART.
+            Elevii accesează hyperlinkuri cu surse istorice (ziarul vremii - Atentatul de la Sarajevo),
+            interacționează cu harta, selectează țări, accesează fișe descriptive. Profesorul ghidează
+            descoperirea relațiilor de cauzalitate.
+          </p>
+
+          <div class="app-row">
+            <div class="app-key">Obiective</div>
+            <div class="app-val">O1: 3 cauze ale PRM · O2: 2 consecințe (economică + socială) la nivel global</div>
+          </div>
+          <div class="app-row">
+            <div class="app-key">SAMR</div>
+            <div class="app-val"><strong>Augmentare (A)</strong> - Harta digitală interactivă + hyperlinkuri = accesibilitate și implicare crescute, dar sarcinile cognitive rămân similare cu o lecție tradițională.</div>
+          </div>
+          <div class="app-row">
+            <div class="app-key">TPACK</div>
+            <div class="app-val">PCK + TPK + TCK prezente. Bine echilibrat, dar nu atinge zona TPACK completă - lipsește integrarea transformatoare.</div>
+          </div>
+          <div class="app-row" style="border: none;">
+            <div class="app-key">PIC-RAT</div>
+            <div class="app-val"><strong>IA - Interactiv + Amplifică.</strong> Elevul interacționează cu harta. Tehnologia amplifică accesul la resurse, dar nu transformă sarcina.</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="sub-title" style="font-size: 20px; margin-bottom: 14px;">Propunere de redesign - nivel CT</h3>
+
+        <div class="app-example" style="background: #F0FBF5; border-color: #C8E6D0;">
+          <div class="app-tag redesign">Reproiectare</div>
+          <p style="font-size: 13.5px; color: var(--grey-700, #374151); line-height: 1.6; margin-bottom: 16px;">
+            Elevii - în echipe de 4-5 - creează un <strong>Atlas Digital Colaborativ al Primului Război Mondial</strong>
+            folosind Google My Maps / StoryMap. Fiecare echipă este responsabilă de perspectiva
+            unui actor-cheie (Germania, Austro-Ungaria, Imperiul Otoman, Antanta, România).
+          </p>
+
+          <div class="app-row">
+            <div class="app-key">SAMR</div>
+            <div class="app-val"><strong>Redefinire (R)</strong> - Un atlas digital colaborativ, multicultural și multimedia nu poate exista fără tehnologie. Sarcina este complet nouă.</div>
+          </div>
+          <div class="app-row">
+            <div class="app-key">PIC-RAT</div>
+            <div class="app-val"><strong>CT - Creativ + Transformare.</strong> Elevii produc artefacte digitale originale, accesibile altor clase și profesori.</div>
+          </div>
+          <div class="app-row" style="border: none;">
+            <div class="app-key">TPACK</div>
+            <div class="app-val">Integrare completă: conținut istoric (CK) + pedagogie colaborativă (PK) + tehnologie geospatială și multimedia (TK) = TPACK.</div>
+          </div>
+        </div>
+
+        <div class="app-upgrade">
+          <h4>Artefacte digitale produse de elevi</h4>
+          <div class="upgrade-tags">
+            <span class="utag">Hartă geospatială interactivă</span>
+            <span class="utag">Cronologie multimedia</span>
+            <span class="utag">Surse istorice comentate</span>
+            <span class="utag">Prezentare comparativă</span>
+            <span class="utag">Glosar colaborativ</span>
+          </div>
+          <p style="font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.6;">
+            Atlasul devine un produs public - publicat pe site-ul școlii, prezentat la alte clase, evaluat de colegi.
+            Evaluarea nu mai testează <em>cunoașterea</em> - testează <em>înțelegerea prin creare</em>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="hr reveal reveal-delay-4"></div>
+
+    <h3 class="sub-title reveal reveal-delay-4" style="font-size: 22px; margin-bottom: 16px;">Cum se integrează cadrul în această lecție?</h3>
+
+    <div class="card-grid col-4 reveal reveal-delay-4">
+      <div class="content-card">
+        <div class="card-num">6E.5 - Nivel Design</div>
+        <h4>Analiza situației</h4>
+        <p>Clasa a VIII-a, cunoștințe de geografie și context geopolitic. Elevi cu experiență colaborativă. Tablă SMART + dispozitive individuale.</p>
+      </div>
+      <div class="content-card">
+        <div class="card-num">Gagné - 11 Ev.</div>
+        <h4>Organizare → Transfer</h4>
+        <p>Secvența celor 11 evenimente structurează cele 3 ore: captare prin provocare istorică, dirijare prin ghid de investigație, performanță prin prezentarea atlasului.</p>
+      </div>
+      <div class="content-card">
+        <div class="card-num">TPACK - Integrare</div>
+        <h4>Conținut × Pedagogie × Tech</h4>
+        <p>CK (PRM), PK (învățare colaborativă, investigație), TK (Google My Maps, StoryMap) - convergente în TPACK: proiect autentic, imposibil fără oricare dintre cele 3.</p>
+      </div>
+      <div class="content-card">
+        <div class="card-num">SAMR R + PIC-RAT CT</div>
+        <h4>Transformare autentică</h4>
+        <p>Elevii nu consumă informație istorică - o reconstituie, o contextualizează și o fac accesibilă. Transfer autentic: atlasul rămâne utilizabil și după lecție.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  13 - CONCLUZII
+═══════════════════════════════════════════ -->
+<section id="concluzii" class="bg-navy">
+  <div class="bg-number">13</div>
+  <div class="section-inner">
+    <div class="section-label reveal">
+      <span class="section-label-line"></span>
+      <span class="section-label-text">13 - Concluzii</span>
+    </div>
+
+    <h2 class="section-title reveal reveal-delay-1">Cinci concluzii pentru<br>educatorii de mâine</h2>
+
+    <div class="conclusion-grid reveal reveal-delay-2">
+      <div class="conclusion-item">
+        <div class="conclusion-num">01</div>
+        <div class="conclusion-text">
+          <h4>Proiectarea sistematică nu este birocratică - este esența profesiei</h4>
+          <p>A proiecta sistematic nu înseamnă a umple formulare - înseamnă a lua decizii conștiente despre cum va învăța fiecare elev în ore lecției tale. Aceasta este diferența dintre un tehnician și un profesionist al educației.</p>
+        </div>
+      </div>
+      <div class="conclusion-item">
+        <div class="conclusion-num">02</div>
+        <div class="conclusion-text">
+          <h4>Modelele nu se exclud - se integrează în fluxuri coerente</h4>
+          <p>6E.5, Gagné adaptat, TPACK și SAMR nu sunt alternative - sunt niveluri complementare ale aceluiași demers. Cadrul integrat propus nu adaugă complexitate, ci reduce deciziile arbitrare.</p>
+        </div>
+      </div>
+      <div class="conclusion-item">
+        <div class="conclusion-num">03</div>
+        <div class="conclusion-text">
+          <h4>Tehnologia nu este scopul - este instrumentul transformării</h4>
+          <p>Școala viitorului nu este dotată cu mai multă tehnologie - este proiectată cu mai multă intenție. Tehnologia apare în lecție doar atunci când produce transformare reală, nu substituție decorativă.</p>
+        </div>
+      </div>
+      <div class="conclusion-item">
+        <div class="conclusion-num">04</div>
+        <div class="conclusion-text">
+          <h4>Școala viitorului se construiește din prezentul proiectării intenționale</h4>
+          <p>Nu există un moment în viitor când educația va fi gata pentru transformare. Transformarea începe în fiecare lecție proiectată sistematic, cu fiecare decizie luată conștient de un profesor pregătit.</p>
+        </div>
+      </div>
+      <div class="conclusion-item">
+        <div class="conclusion-num">05</div>
+        <div class="conclusion-text">
+          <h4>Un educator care gândește sistemic este cel mai puternic reformator al sistemului</h4>
+          <p>Reforma educațională nu vine exclusiv de sus în jos - vine din fiecare sală de clasă în care un profesor înțelege că modul în care proiectează astăzi determină competențele elevilor de mâine, care vor fi cetățenii, decidenții și liderii societății.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="hr reveal reveal-delay-4"></div>
+
+    <div class="callout reveal reveal-delay-4">
+      <p>„Reforma educației nu este posibilă fără reformarea modului în care gândim lecția. Cadrul integrat propus nu este o soluție tehnologică - este un mod de a face invizibilul vizibil: procesul prin care un profesor transformă conținut în experiență autentică de învățare."</p>
+      <div class="source">- Tufiș, Paul, Tudosi (2025/2026)</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  14 - REFERINȚE
+═══════════════════════════════════════════ -->
+<section id="referinte" class="bg-light">
+  <div class="bg-number">14</div>
+  <div class="section-inner">
+    <div class="section-label reveal">
+      <span class="section-label-line"></span>
+      <span class="section-label-text">14 - Referințe bibliografice</span>
+    </div>
+
+    <h2 class="section-title reveal reveal-delay-1">Referințe bibliografice</h2>
+
+    <div class="two-col reveal reveal-delay-2">
+      <ul class="ref-list">
+        <li>
+          Driscoll, M. P. (2000). <em>Psychology of Learning for Instruction</em> (2nd ed.). Allyn & Bacon.
+        </li>
+        <li>
+          Engelmann, S. (1980). <em>Direct Instruction</em>. Educational Technology Publications.
+        </li>
+        <li>
+          Gagné, R. M., & Briggs, L. J. (1974). <em>Principles of Instructional Design</em>. Holt, Rinehart & Winston.
+        </li>
+        <li>
+          Hattie, J., & Yates, G. (2013). <em>Visible Learning and the Science of How We Learn</em>. Routledge.
+        </li>
+        <li>
+          Ilie, M. D. (2014). An adaption of Gagne's instructional model to increase the teaching effectiveness in the classroom: the impact in Romanian Universities. <em>Educational Technology Research and Development, 62</em>(6), 767–794.
+          <a href="https://doi.org/10.1007/s11423-014-9353-6" target="_blank">https://doi.org/10.1007/s11423-014-9353-6</a>
+        </li>
+        <li>
+          Ilie, M. D. (Coord.), Crașovan, M., Petrescu, P., Matichescu, M. L., Sârbescu, P., & Florea, C. I. (2014). <em>Cetățean al Uniunii Europene: Manual de strategii didactice pentru ciclul primar, fundamentate pe dovezi empirice</em>. Editura EIKON.
+        </li>
+        <li>
+          Ilie, M. D., Maricuțoiu, L. P., Crașovan, M., Matichescu, M. L., & Marcu, A. (in press). One-time pedagogical events to teach academics instructional models and the effect on students' perceptions of teaching effectiveness. In <em>The Future of Higher Education - Bologna Process Researchers' Conference, 5th Edition (FOHE-BPRC5) series</em>. Springer Nature.
+        </li>
+      </ul>
+
+      <ul class="ref-list">
+        <li>
+          Iucu, R. B. (2008). <em>Instruirea școlară: Perspective teoretice și aplicative</em> (ediția a II-a revăzută și adăugită). Editura Polirom.
+        </li>
+        <li>
+          Kimmons, R., Graham, C. R., & West, R. E. (2020). The PICRAT model for technology integration in education. <em>Contemporary Issues in Technology and Teacher Education, 20</em>(1), 176–198.
+        </li>
+        <li>
+          Reiser, R. A., & Dempsey, J. V. (Eds.). (2007). <em>Trends and Issues in Instructional Design and Technology</em> (2nd ed.). Pearson Education.
+        </li>
+        <li>
+          Schneider, M., & Preckel, F. (2017). Variables associated with achievement in higher education: A systematic review of meta-analyses. <em>Psychological Bulletin, 143</em>(6), 565–600.
+          <a href="http://dx.doi.org/10.1037/bul0000098" target="_blank">http://dx.doi.org/10.1037/bul0000098</a>
+        </li>
+        <li>
+          Smith, P. L., & Ragan, T. J. (2012). <em>Instructional Design</em> (3rd ed.). Wiley.
+        </li>
+        <li>
+          Spector, J. M. (2020). Remarks on progress in educational technology. <em>Educational Technology Research and Development, 68</em>, 833–836.
+          <a href="https://doi.org/10.1007/s11423-020-09736-x" target="_blank">https://doi.org/10.1007/s11423-020-09736-x</a>
+        </li>
+        <li>
+          Stockard, J., Wood, T. W., Coughlin, C., & Rasplica Khoury, C. (2018). The effectiveness of direct instruction curricula: A meta-analysis of a half century of research. <em>Review of Educational Research, 88</em>(4), 479–507.
+          <a href="https://doi.org/10.3102/0034654317751919" target="_blank">https://doi.org/10.3102/0034654317751919</a>
+        </li>
+        <li>
+          TALIS - OECD. (2013, 2018). <em>Teaching and Learning International Survey</em>. Organisation for Economic Co-operation and Development.
+          <a href="https://www.oecd.org/education/talis/" target="_blank">www.oecd.org/education/talis</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="hr reveal reveal-delay-3"></div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center;" class="reveal reveal-delay-3">
+      <div>
+        <p style="font-family: var(--font-mono); font-size: 11px; color: var(--grey-400); letter-spacing: 0.1em; text-transform: uppercase;">Management și Leadership în Organizația Școlară · DPPD · UVT · 2025/2026</p>
+        <p style="font-family: var(--font-mono); font-size: 11px; color: var(--grey-400); letter-spacing: 0.1em; margin-top: 4px;">Andrei Tufiș · Denisa Paul · Adrian Tudosi</p>
+      </div>
+      <div style="text-align: right;">
+        <p style="font-family: var(--font-display); font-size: 18px; font-style: italic; color: var(--grey-600);">„Fă ceea ce poți, cu ceea ce ai,<br>acolo unde ești."</p>
+        <p style="font-family: var(--font-mono); font-size: 10px; color: var(--grey-400); margin-top: 4px; letter-spacing: 0.1em;">- Theodore Roosevelt</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+// ─────────────────────────────────────────
+// PROGRESS BAR
+// ─────────────────────────────────────────
+const progressBar = document.getElementById('progress-bar');
+
+function updateProgress() {
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  progressBar.style.width = progress + '%';
+}
+
+// ─────────────────────────────────────────
+// SIDEBAR NAV
+// ─────────────────────────────────────────
+const sections = document.querySelectorAll('section[id]');
+const navItems = document.querySelectorAll('.nav-item');
+
+function updateNav() {
+  const scrollY = window.pageYOffset;
+  const windowHeight = window.innerHeight;
+
+  sections.forEach((section, index) => {
+    const rect = section.getBoundingClientRect();
+    const inView = rect.top < windowHeight * 0.5 && rect.bottom > windowHeight * 0.5;
+
+    if (inView) {
+      navItems.forEach(n => n.classList.remove('active'));
+      if (navItems[index]) navItems[index].classList.add('active');
+    }
+  });
+}
+
+navItems.forEach((item) => {
+  item.addEventListener('click', () => {
+    const target = item.getAttribute('data-target');
+    const section = document.getElementById(target);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
+// ─────────────────────────────────────────
+// SCROLL REVEAL
+// ─────────────────────────────────────────
+const revealEls = document.querySelectorAll('.reveal');
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, {
+  threshold: 0.12,
+  rootMargin: '0px 0px -40px 0px'
+});
+
+revealEls.forEach(el => revealObserver.observe(el));
+
+// ─────────────────────────────────────────
+// SCROLL EVENT
+// ─────────────────────────────────────────
+let ticking = false;
+
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      updateProgress();
+      updateNav();
+      ticking = false;
+    });
+    ticking = true;
+  }
+});
+
+// Initial calls
+updateProgress();
+updateNav();
+
+// ─────────────────────────────────────────
+// KEYBOARD NAVIGATION (arrow keys)
+// ─────────────────────────────────────────
+const sectionList = Array.from(sections);
+let currentSectionIndex = 0;
+
+function getCurrentSection() {
+  const scrollY = window.pageYOffset;
+  const windowH = window.innerHeight;
+  let closest = 0;
+  let closestDist = Infinity;
+
+  sectionList.forEach((sec, i) => {
+    const rect = sec.getBoundingClientRect();
+    const dist = Math.abs(rect.top);
+    if (dist < closestDist) {
+      closestDist = dist;
+      closest = i;
+    }
+  });
+
+  return closest;
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+    e.preventDefault();
+    currentSectionIndex = getCurrentSection();
+    if (currentSectionIndex < sectionList.length - 1) {
+      sectionList[currentSectionIndex + 1].scrollIntoView({ behavior: 'smooth' });
+    }
+  } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+    e.preventDefault();
+    currentSectionIndex = getCurrentSection();
+    if (currentSectionIndex > 0) {
+      sectionList[currentSectionIndex - 1].scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+});
+</script>
+</body>
+</html>
