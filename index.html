@@ -594,6 +594,8 @@ section.bg-navy .principle-icon svg { color: var(--blue-light); }
   width: 420px;
   height: 380px;
   margin: 0 auto;
+  max-width: 100%;
+  overflow: visible;
 }
 
 .tpack-circle {
@@ -613,6 +615,7 @@ section.bg-navy .principle-icon svg { color: var(--blue-light); }
 
 .tpack-wrapper:hover .tpack-circle { opacity: 0.5; }
 .tpack-wrapper:hover .tpack-circle:hover { opacity: 1; }
+
 
 .circle-tk {
   width: 200px; height: 200px;
@@ -1525,10 +1528,225 @@ section.bg-navy .engelmann-list li {
   line-height: 1.55;
 }
 
+/* ── HAMBURGER MENU (mobil only) ─────────────────── */
+#hamburger-btn {
+  display: none;
+}
+
+#mobile-menu {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  #hamburger-btn {
+    display: flex;
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 1001;
+    width: 44px;
+    height: 44px;
+    background: var(--navy);
+    border: 1px solid rgba(90,184,224,0.3);
+    border-radius: 4px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  #hamburger-btn:hover { background: var(--navy-light); }
+
+  #hamburger-btn span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--blue-light);
+    border-radius: 2px;
+    transition: all 0.25s ease;
+    transform-origin: center;
+  }
+
+  #hamburger-btn.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  #hamburger-btn.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  #hamburger-btn.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  #mobile-menu {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100vh;
+    background: var(--navy);
+    border-left: 1px solid rgba(90,184,224,0.15);
+    z-index: 1000;
+    padding: 72px 24px 32px;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    box-shadow: -8px 0 32px rgba(0,0,0,0.4);
+  }
+
+  #mobile-menu.open {
+    transform: translateX(0);
+  }
+
+  #mobile-menu-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  #mobile-menu-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .mobile-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    cursor: pointer;
+    transition: background 0.15s ease;
+    border-radius: 3px;
+  }
+
+  .mobile-nav-item:hover,
+  .mobile-nav-item.active {
+    background: rgba(2,122,177,0.15);
+  }
+
+  .mobile-nav-num {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--blue-light);
+    min-width: 20px;
+    letter-spacing: 0.05em;
+  }
+
+  .mobile-nav-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    font-family: var(--font-body);
+    letter-spacing: 0.02em;
+  }
+
+  .mobile-nav-item.active .mobile-nav-label {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .mobile-nav-item.active .mobile-nav-num {
+    color: var(--gold);
+  }
+
+  .mobile-menu-title {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--grey-400);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(90,184,224,0.2);
+  }
+}
+  
 /* PRINT / SCROLL CONTAINER FIXES */
+/* ── TABLET (≤ 1200px) ─────────────────────────── */
 @media (max-width: 1200px) {
-  section { padding: 60px 60px; }
+  section { padding: 60px 60px 60px 80px; }
   #sidebar { right: 16px; }
+  .tpack-wrapper { width: 360px; height: 330px; }
+}
+
+/* ── TABLET MIC / LANDSCAPE PHONE (≤ 900px) ────── */
+@media (max-width: 900px) {
+  section { padding: 60px 40px; min-height: auto; }
+  .bg-number { font-size: 140px; right: 20px; }
+  #sidebar { display: none; }
+
+  h2.section-title { font-size: 32px; }
+  .lead { font-size: 15px; }
+
+  .two-col,
+  .two-col.wide-left,
+  .two-col.wide-right { grid-template-columns: 1fr; gap: 32px; }
+
+  .card-grid.col-3,
+  .card-grid.col-4 { grid-template-columns: repeat(2, 1fr); }
+
+  .myth-grid { grid-template-columns: 1fr; }
+  .myth-col:first-child { border-bottom: 1px solid var(--grey-200); }
+
+  .addie-flow { flex-direction: column; gap: 4px; }
+  .addie-step + .addie-step::before { display: none; }
+
+  .tpack-wrapper { width: 300px; height: 270px; }
+  .tpack-circle { width: 160px !important; height: 160px !important; }
+
+  .framework-stack { gap: 6px; }
+
+  .context-card-grid { grid-template-columns: 1fr; }
+}
+
+/* ── MOBIL (≤ 600px) ────────────────────────────── */
+@media (max-width: 600px) {
+  section { padding: 48px 20px; }
+  .bg-number { display: none; }
+
+  h2.section-title { font-size: 26px; line-height: 1.3; }
+  .sub-title { font-size: 18px; }
+  .lead { font-size: 14px; }
+
+  .two-col,
+  .two-col.wide-left,
+  .two-col.wide-right { grid-template-columns: 1fr; gap: 24px; }
+
+  .card-grid.col-2,
+  .card-grid.col-3,
+  .card-grid.col-4 { grid-template-columns: 1fr; }
+
+  .gagne-grid { grid-template-columns: 1fr; }
+
+  .addie-flow { flex-direction: column; }
+  .addie-step + .addie-step::before { display: none; }
+
+  .tpack-wrapper { width: 100%; max-width: 300px; height: 260px; }
+
+  .picrat-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .picrat-table { min-width: 420px; }
+
+  .comp-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  .framework-stack { gap: 4px; }
+  .fw-layer { flex-direction: column; }
+  .fw-label { width: 100% !important; min-width: unset !important; }
+
+  .section-label { display: none; }
+
+  .callout { padding: 20px; }
+  .callout p { font-size: 13px; }
+
+  .numbered-list li { font-size: 13px; }
+  .body-text { font-size: 13px; }
 }
 
 </style>
@@ -1536,6 +1754,42 @@ section.bg-navy .engelmann-list li {
 <body>
 
 <div id="progress-bar"></div>
+<!-- HAMBURGER BTN (mobil only) -->
+<button id="hamburger-btn" aria-label="Meniu" aria-expanded="false">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+<!-- MOBILE MENU OVERLAY -->
+<div id="mobile-menu-overlay"></div>
+
+<!-- MOBILE MENU DRAWER -->
+<nav id="mobile-menu" aria-hidden="true">
+  <div class="mobile-menu-title">Navigare</div>
+  <div class="mobile-nav-item active" data-target="cover"><span class="mobile-nav-num">00</span><span class="mobile-nav-label">Titlu</span></div>
+  <div class="mobile-nav-item" data-target="disclaimer"><span class="mobile-nav-num">01</span><span class="mobile-nav-label">Relevanța</span></div>
+  <div class="mobile-nav-item" data-target="zece-w"><span class="mobile-nav-num">02</span><span class="mobile-nav-label">Carta Proiectului</span></div>
+  <div class="mobile-nav-item" data-target="context"><span class="mobile-nav-num">03</span><span class="mobile-nav-label">Context</span></div>
+  <div class="mobile-nav-item" data-target="modele-internationale"><span class="mobile-nav-num">04</span><span class="mobile-nav-label">Modele Internaționale</span></div>
+  <div class="mobile-nav-item" data-target="traditie"><span class="mobile-nav-num">05</span><span class="mobile-nav-label">Tradiția Românească</span></div>
+  <div class="mobile-nav-item" data-target="misiune"><span class="mobile-nav-num">06</span><span class="mobile-nav-label">Misiune & Viziune</span></div>
+  <div class="mobile-nav-item" data-target="leadership"><span class="mobile-nav-num">07</span><span class="mobile-nav-label">Leadership</span></div>
+  <div class="mobile-nav-item" data-target="definitie"><span class="mobile-nav-num">08</span><span class="mobile-nav-label">Definiție DI</span></div>
+  <div class="mobile-nav-item" data-target="sixe"><span class="mobile-nav-num">09</span><span class="mobile-nav-label">Modelul 6E.5</span></div>
+  <div class="mobile-nav-item" data-target="addie"><span class="mobile-nav-num">10</span><span class="mobile-nav-label">ADDIE</span></div>
+  <div class="mobile-nav-item" data-target="principii"><span class="mobile-nav-num">11</span><span class="mobile-nav-label">Principii</span></div>
+  <div class="mobile-nav-item" data-target="gagne"><span class="mobile-nav-num">12</span><span class="mobile-nav-label">Gagné</span></div>
+  <div class="mobile-nav-item" data-target="tpack"><span class="mobile-nav-num">13</span><span class="mobile-nav-label">TPACK</span></div>
+  <div class="mobile-nav-item" data-target="samr"><span class="mobile-nav-num">14</span><span class="mobile-nav-label">SAMR</span></div>
+  <div class="mobile-nav-item" data-target="picrat"><span class="mobile-nav-num">15</span><span class="mobile-nav-label">PIC-RAT</span></div>
+  <div class="mobile-nav-item" data-target="cadru"><span class="mobile-nav-num">16</span><span class="mobile-nav-label">Cadrul Integrat</span></div>
+  <div class="mobile-nav-item" data-target="aplicatie"><span class="mobile-nav-num">17</span><span class="mobile-nav-label">Aplicație</span></div>
+  <div class="mobile-nav-item" data-target="atelier"><span class="mobile-nav-num">18</span><span class="mobile-nav-label">Atelier Formare</span></div>
+  <div class="mobile-nav-item" data-target="timeline"><span class="mobile-nav-num">19</span><span class="mobile-nav-label">Plan Implementare</span></div>
+  <div class="mobile-nav-item" data-target="concluzii"><span class="mobile-nav-num">20</span><span class="mobile-nav-label">Concluzii</span></div>
+  <div class="mobile-nav-item" data-target="referinte"><span class="mobile-nav-num">21</span><span class="mobile-nav-label">Referințe</span></div>
+</nav>
 
 <nav id="sidebar">
   <div class="nav-item active" data-target="cover">
@@ -3741,6 +3995,58 @@ document.addEventListener('keydown', (e) => {
     }
   }
 });
+
+// ── HAMBURGER MENU ─────────────────────────────────
+const hamburgerBtn = document.getElementById('hamburger-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+const mobileOverlay = document.getElementById('mobile-menu-overlay');
+
+function openMenu() {
+  hamburgerBtn.classList.add('open');
+  mobileMenu.classList.add('open');
+  mobileOverlay.classList.add('open');
+  hamburgerBtn.setAttribute('aria-expanded', 'true');
+  mobileMenu.setAttribute('aria-hidden', 'false');
+}
+
+function closeMenu() {
+  hamburgerBtn.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  mobileOverlay.classList.remove('open');
+  hamburgerBtn.setAttribute('aria-expanded', 'false');
+  mobileMenu.setAttribute('aria-hidden', 'true');
+}
+
+hamburgerBtn.addEventListener('click', () => {
+  mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
+});
+
+mobileOverlay.addEventListener('click', closeMenu);
+
+document.querySelectorAll('.mobile-nav-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const target = item.getAttribute('data-target');
+    const section = document.getElementById(target);
+    if (section) section.scrollIntoView({ behavior: 'smooth' });
+    closeMenu();
+  });
+});
+
+// Sincronizare active state cu sidebar-ul existent (reutilizează IntersectionObserver)
+const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+const sectionObserverMobile = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      mobileNavItems.forEach(item => {
+        item.classList.toggle('active', item.getAttribute('data-target') === id);
+      });
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('section[id]').forEach(sec => sectionObserverMobile.observe(sec));
+  
 </script>
 </body>
 </html>
