@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>DESIGN · Atelier Educație Socială · DPPD UVT 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js" defer></script>
+<style>
+:root {
+  --bg:       #060c1a;
+  --bg2:      #0c1526;
+  --bg3:      #111e35;
+  --navy:     #0d2145;
+  --gold:     #c9a84c;
+  --gold-l:   #e8c97a;
+  --gold-dim: rgba(201,168,76,0.12);
+  --gold-bdr: rgba(201,168,76,0.25);
+  --white:    #f0f4ff;
+  --muted:    #7a8599;
+  --bdr:      rgba(255,255,255,0.07);
+  --bdr2:     rgba(255,255,255,0.12);
+  --red:      #e05555;
+  --green:    #3db87a;
+  --cream:    #faf8f4;
+  --navy-t:   #0d2145;
+  --gold-t:   #b8912a;
+  --muted-t:  #6b7280;
+  --bdr-l:    #e5e0d6;
+  --font-d: 'Cormorant Garamond', serif;
+  --font-s: 'DM Sans', sans-serif;
+  --r: 8px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-s); background: var(--bg); color: var(--white); font-size: 15px; line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+input  { font-family: inherit; }
+[hidden] { display: none !important; }
+.fi { display: inline-flex; align-items: center; justify-content: center; vertical-align: middle; flex-shrink: 0; }
+.fi svg { display: block; }
+
+.dot-bg {
+  background-image: radial-gradient(circle, rgba(201,168,76,0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* LANDING */
+#screen-landing { min-height: 100svh; display: flex; flex-direction: column; }
+.landing-top { padding: 18px 32px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--bdr); flex-shrink: 0; }
+.landing-logo { display: flex; align-items: center; gap: 12px; }
+.logo-box { width: 36px; height: 36px; border: 1px solid var(--gold-bdr); display: flex; align-items: center; justify-content: center; border-radius: 4px; }
+.logo-box span { font-family: var(--font-d); font-size: 14px; font-weight: 700; color: var(--gold); letter-spacing: -0.5px; }
+.logo-text { font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); }
+.landing-badge { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); padding: 5px 12px; border: 1px solid var(--bdr2); border-radius: 20px; }
+.landing-hero { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 48px 24px 32px; text-align: center; }
+.hero-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+.hero-title { font-family: var(--font-d); font-size: clamp(42px, 8vw, 74px); font-weight: 700; line-height: 1.0; letter-spacing: -1px; margin-bottom: 16px; }
+.hero-title em { color: var(--gold-l); font-style: italic; }
+.hero-divider { width: 48px; height: 1px; background: var(--gold); margin: 0 auto 20px; opacity: 0.5; }
+.hero-sub { font-size: 14px; font-weight: 300; color: var(--muted); max-width: 520px; margin: 0 auto 12px; line-height: 1.75; }
+.hero-tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 52px; }
+.hero-tag { font-size: 10px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 12px; border: 1px solid var(--bdr2); border-radius: 20px; color: var(--muted); }
+.entry-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; width: 100%; max-width: 640px; }
+@media (max-width: 520px) { .entry-grid { grid-template-columns: 1fr; max-width: 340px; } }
+.entry-card { position: relative; border: 1px solid var(--bdr); border-radius: var(--r); padding: 28px 24px 24px; text-align: left; cursor: pointer; transition: transform 0.2s, border-color 0.2s; background: var(--bg2); overflow: hidden; }
+.entry-card::before { content: ''; position: absolute; inset: 0; border-radius: var(--r); opacity: 0; transition: opacity 0.25s; }
+.entry-card:hover { transform: translateY(-3px); }
+.card-activitate { border-color: var(--gold-bdr); }
+.card-activitate::before { background: linear-gradient(135deg, rgba(201,168,76,0.06) 0%, transparent 60%); }
+.card-activitate:hover { border-color: var(--gold); }
+.card-activitate:hover::before { opacity: 1; }
+.card-ghid:hover { border-color: var(--bdr2); }
+.card-icon { width: 40px; height: 40px; border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.card-activitate .card-icon { background: rgba(201,168,76,0.12); color: var(--gold); }
+.card-ghid .card-icon { background: rgba(255,255,255,0.05); color: var(--muted); }
+.card-label { font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 6px; }
+.card-activitate .card-label { color: var(--gold); }
+.card-ghid .card-label { color: var(--muted); }
+.card-title { font-family: var(--font-d); font-size: 22px; font-weight: 700; margin-bottom: 10px; line-height: 1.2; }
+.card-desc { font-size: 12px; font-weight: 300; color: var(--muted); line-height: 1.6; margin-bottom: 20px; }
+.card-cta { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; transition: gap 0.2s; }
+.card-activitate .card-cta { color: var(--gold); }
+.card-ghid .card-cta { color: var(--muted); }
+.entry-card:hover .card-cta { gap: 12px; }
+.card-lock { position: absolute; top: 16px; right: 16px; color: var(--muted); opacity: 0.4; }
+.landing-footer { padding: 14px 32px; border-top: 1px solid var(--bdr); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; flex-shrink: 0; }
+.lf-text { font-size: 11px; color: var(--muted); font-weight: 300; }
+.lf-text strong { color: rgba(240,244,255,0.45); font-weight: 500; }
+
+/* MODAL */
+#modal-password { position: fixed; inset: 0; background: rgba(6,12,26,0.92); backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 24px; }
+.modal-box { background: var(--bg2); border: 1px solid var(--bdr2); border-radius: 12px; padding: 40px 36px; max-width: 380px; width: 100%; text-align: center; }
+.modal-icon { display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 12px; background: var(--bg3); border: 1px solid var(--bdr2); margin: 0 auto 20px; color: var(--muted); }
+.modal-title { font-family: var(--font-d); font-size: 26px; font-weight: 700; margin-bottom: 8px; }
+.modal-sub { font-size: 13px; color: var(--muted); margin-bottom: 28px; line-height: 1.65; }
+.modal-input { width: 100%; background: var(--bg3); border: 1px solid var(--bdr2); border-radius: 6px; padding: 13px 16px; font-size: 15px; font-weight: 600; color: var(--white); letter-spacing: 3px; text-align: center; outline: none; margin-bottom: 8px; transition: border-color 0.2s; }
+.modal-input:focus { border-color: var(--gold-bdr); }
+.modal-input::placeholder { letter-spacing: 1px; font-weight: 300; color: var(--muted); }
+.modal-error { font-size: 12px; color: var(--red); margin-bottom: 12px; font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 6px; }
+.modal-btn-row { display: grid; grid-template-columns: 1fr 2fr; gap: 10px; margin-top: 8px; }
+.btn-cancel { padding: 12px; border: 1px solid var(--bdr2); border-radius: 6px; color: var(--muted); font-size: 13px; font-weight: 500; transition: color 0.2s; }
+.btn-cancel:hover { color: var(--white); }
+.btn-enter { padding: 12px 20px; background: var(--gold); border-radius: 6px; color: #0a0f1e; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; transition: background 0.2s, transform 0.15s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.btn-enter:hover { background: var(--gold-l); transform: translateY(-1px); }
+
+/* SHARED BAR */
+.screen-bar { position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--bdr); backdrop-filter: blur(16px); display: flex; align-items: center; justify-content: space-between; padding: 13px 24px; }
+.screen-bar-dark  { background: rgba(6,12,26,0.92); }
+.screen-bar-light { background: rgba(250,248,244,0.95); border-bottom-color: var(--bdr-l); }
+.btn-back { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 7px 14px; border-radius: 20px; border: 1px solid; transition: all 0.2s; }
+.btn-back-dark  { color: var(--muted); border-color: var(--bdr2); }
+.btn-back-dark:hover  { color: var(--white); }
+.btn-back-light { color: var(--muted-t); border-color: var(--bdr-l); }
+.btn-back-light:hover { color: var(--navy-t); }
+.bar-title { font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; }
+.bar-title-dark  { color: var(--muted); }
+.bar-title-light { color: var(--muted-t); }
+
+/* GHID */
+#screen-ghid { background: var(--cream); color: var(--navy-t); min-height: 100svh; }
+.ghid-header { background: var(--navy-t); color: white; padding: 40px 48px 36px; position: relative; overflow: hidden; }
+.ghid-header::after { content: ''; position: absolute; top: -60px; right: -60px; width: 300px; height: 300px; border-radius: 50%; border: 1px solid rgba(201,168,76,0.1); pointer-events: none; }
+.ghid-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.ghid-h1 { font-family: var(--font-d); font-size: clamp(28px, 4vw, 42px); font-weight: 700; line-height: 1.15; margin-bottom: 10px; }
+.ghid-h1 em { color: var(--gold-l); font-style: italic; }
+.ghid-hsub { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.5); margin-bottom: 24px; }
+.ghid-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.ghid-pill { font-size: 10px; font-weight: 500; letter-spacing: 1px; padding: 4px 14px; border: 1px solid rgba(201,168,76,0.28); border-radius: 20px; color: rgba(232,201,122,0.85); }
+.ghid-body { max-width: 860px; margin: 0 auto; padding: 44px 32px 80px; }
+@media (max-width: 600px) { .ghid-header { padding: 28px 24px; } .ghid-body { padding: 28px 20px 60px; } }
+.ghid-summary { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--bdr-l); border-radius: var(--r); overflow: hidden; margin-bottom: 44px; background: white; }
+@media (max-width: 600px) { .ghid-summary { grid-template-columns: repeat(2, 1fr); } }
+.gs-item { padding: 20px 16px; text-align: center; border-right: 1px solid var(--bdr-l); }
+.gs-item:last-child { border-right: none; }
+.gs-num { font-family: var(--font-d); font-size: 32px; font-weight: 700; color: var(--navy-t); display: block; line-height: 1; margin-bottom: 4px; }
+.gs-label { font-size: 10px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted-t); }
+.section-label { font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-t); margin-bottom: 6px; }
+.g-divider { border: none; border-top: 1px solid var(--bdr-l); margin: 36px 0; }
+.g-timeline { display: flex; flex-direction: column; }
+.g-phase { display: grid; grid-template-columns: 80px 1fr; position: relative; }
+.g-phase:not(:last-child)::after { content: ''; position: absolute; left: 39px; top: 54px; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--navy-t) 50%, transparent); opacity: 0.07; }
+.g-phase-time { padding-top: 16px; display: flex; flex-direction: column; align-items: center; z-index: 1; }
+.g-bubble { width: 42px; height: 42px; border-radius: 50%; background: var(--navy-t); color: white; display: flex; align-items: center; justify-content: center; flex-direction: column; border: 2px solid var(--gold-t); }
+.g-bubble-min { font-family: var(--font-d); font-size: 13px; font-weight: 700; line-height: 1; }
+.g-bubble-sub { font-size: 8px; opacity: 0.6; }
+.g-phase-body { padding: 14px 0 28px 18px; border-left: 1px solid var(--bdr-l); margin-left: -1px; }
+.g-phase-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px; }
+.g-phase-n { font-size: 9px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold-t); white-space: nowrap; }
+.g-phase-t { font-family: var(--font-d); font-size: 20px; font-weight: 700; color: var(--navy-t); line-height: 1.2; }
+.role-row { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 10px; }
+.role-chip { font-size: 8px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+.chip-f { background: var(--navy-t); color: white; }
+.chip-p { background: var(--gold-t); color: white; }
+.chip-m { background: #dbeafe; color: #1e40af; border: 1px solid #bfdbfe; }
+.chip-s { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+.role-text { font-size: 13.5px; line-height: 1.65; color: var(--navy-t); }
+.role-text strong { font-weight: 600; }
+.role-text em { color: var(--muted-t); font-style: italic; }
+.script { background: var(--navy-t); color: rgba(255,255,255,0.88); border-radius: 6px; padding: 16px 20px 16px 36px; font-size: 13px; font-style: italic; line-height: 1.7; margin: 10px 0; border-left: 3px solid var(--gold-t); position: relative; }
+.script::before { content: '"'; font-family: var(--font-d); font-size: 52px; color: var(--gold-t); opacity: 0.28; position: absolute; top: -8px; left: 8px; line-height: 1; pointer-events: none; }
+.case-box { background: white; border: 1px solid var(--bdr-l); border-top: 3px solid var(--navy-t); border-radius: 6px; padding: 16px 20px; margin: 12px 0; }
+.cb-title { font-size: 9px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--navy-t); margin-bottom: 12px; opacity: 0.65; }
+.cb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 600px) { .cb-grid { grid-template-columns: 1fr; } }
+.cb-col h4 { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
+.cb-col.before h4 { color: var(--red); }
+.cb-col.after  h4 { color: var(--green); }
+.cb-col ul { list-style: none; }
+.cb-col ul li { font-size: 12.5px; line-height: 1.55; padding: 3px 0 3px 16px; position: relative; color: var(--navy-t); }
+.cb-col ul li::before { content: '-'; position: absolute; left: 0; color: var(--muted-t); font-size: 10px; }
+.cb-col.after ul li::before { color: var(--green); }
+.tip-box { background: #fafaf7; border: 1px solid var(--bdr-l); border-left: 3px solid var(--gold-t); border-radius: 5px; padding: 10px 14px; font-size: 12.5px; color: var(--navy-t); display: flex; gap: 10px; align-items: flex-start; margin: 8px 0; }
+.tip-box .fi { color: var(--gold-t); margin-top: 2px; flex-shrink: 0; }
+.comp-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.comp-badge { font-size: 10px; font-weight: 600; padding: 3px 10px; border: 1px solid var(--bdr-l); border-radius: 4px; color: var(--navy-t); background: white; }
+.mat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px; }
+@media (max-width: 600px) { .mat-grid { grid-template-columns: 1fr 1fr; } }
+.mat-card { background: white; border: 1px solid var(--bdr-l); border-radius: 6px; padding: 16px; }
+.mat-icon { width: 36px; height: 36px; border-radius: 6px; background: #f0ede8; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; color: var(--navy-t); }
+.mat-t { font-size: 12px; font-weight: 600; color: var(--navy-t); margin-bottom: 4px; }
+.mat-d { font-size: 11.5px; color: var(--muted-t); line-height: 1.5; }
+.ghid-footer { background: var(--navy-t); color: rgba(255,255,255,0.4); font-size: 11px; padding: 16px 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
+.ghid-footer strong { color: rgba(255,255,255,0.65); }
+.three-q-grid { display: grid; grid-template-columns: 28px 1fr; gap: 10px 14px; align-items: start; }
+.tq-num { width: 28px; height: 28px; border-radius: 50%; background: var(--navy-t); color: var(--gold-t); display: flex; align-items: center; justify-content: center; font-family: var(--font-d); font-weight: 700; font-size: 15px; flex-shrink: 0; }
+
+/* ACTIVITATE */
+#screen-activitate { background: var(--bg); min-height: 100svh; display: flex; flex-direction: column; }
+.progress-track { height: 3px; background: var(--bg3); flex-shrink: 0; }
+.progress-fill { height: 100%; background: linear-gradient(to right, var(--gold), var(--gold-l)); transition: width 0.4s cubic-bezier(0.4,0,0.2,1); }
+.phase-dots { display: flex; gap: 6px; align-items: center; justify-content: center; padding: 14px 0 0; flex-shrink: 0; }
+.phase-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--bg3); border: 1px solid var(--bdr2); transition: all 0.3s; }
+.phase-dot.active { width: 22px; border-radius: 3px; background: var(--gold); border-color: var(--gold); }
+.phase-dot.done   { background: rgba(201,168,76,0.28); border-color: rgba(201,168,76,0.28); }
+.timer-block { display: flex; align-items: center; justify-content: center; gap: 16px; padding: 16px 24px 10px; flex-shrink: 0; }
+.timer-display { font-family: var(--font-d); font-size: 44px; font-weight: 700; color: var(--white); letter-spacing: -1px; min-width: 116px; text-align: center; transition: color 0.3s; }
+.timer-display.urgent { color: var(--red); }
+.timer-display.done   { color: var(--muted); }
+.timer-btn { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--bdr2); color: var(--muted); transition: all 0.2s; }
+.timer-btn:hover  { border-color: var(--gold-bdr); color: var(--gold); }
+.timer-btn.active { border-color: var(--gold-bdr); color: var(--gold); background: var(--gold-dim); }
+.phase-scroll { flex: 1; overflow-y: auto; padding: 20px 24px 24px; }
+.phase-panel { max-width: 680px; margin: 0 auto; animation: fadeInUp 0.3s ease both; }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.act-phase-num { font-size: 9px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+.act-phase-title { font-family: var(--font-d); font-size: clamp(26px, 5vw, 38px); font-weight: 700; line-height: 1.15; margin-bottom: 8px; }
+.act-phase-sub { font-size: 13px; font-weight: 300; color: var(--muted); margin-bottom: 28px; line-height: 1.65; }
+.act-card { background: var(--bg2); border: 1px solid var(--bdr); border-radius: var(--r); padding: 20px; margin-bottom: 14px; }
+.act-card-title { font-size: 9px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+.act-card-title.gold { color: var(--gold); }
+.cmp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 560px) { .cmp-grid { grid-template-columns: 1fr; } }
+.cmp-col { padding: 14px 16px; border-radius: 6px; }
+.cmp-before { background: rgba(224,85,85,0.06); border: 1px solid rgba(224,85,85,0.14); }
+.cmp-after  { background: rgba(61,184,122,0.06); border: 1px solid rgba(61,184,122,0.14); }
+.cmp-col-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+.cmp-before .cmp-col-label { color: var(--red); }
+.cmp-after  .cmp-col-label { color: var(--green); }
+.cmp-col ul { list-style: none; }
+.cmp-col ul li { font-size: 13px; line-height: 1.55; padding: 4px 0 4px 16px; position: relative; color: rgba(240,244,255,0.82); }
+.cmp-col ul li::before { content: '-'; position: absolute; left: 0; font-size: 10px; color: var(--muted); }
+.gagne-q { display: grid; grid-template-columns: 32px 1fr; gap: 12px 14px; align-items: start; }
+.gagne-n { width: 32px; height: 32px; border-radius: 50%; background: var(--bg3); border: 1px solid var(--gold-bdr); color: var(--gold); font-family: var(--font-d); font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.gagne-title { font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 3px; }
+.gagne-sub   { font-size: 12px; font-weight: 300; color: var(--muted); line-height: 1.5; }
+.samr-ladder { display: flex; flex-direction: column; gap: 6px; }
+.samr-row { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-radius: 5px; background: var(--bg3); border: 1px solid var(--bdr); }
+.samr-row.target { border-color: var(--gold-bdr); background: var(--gold-dim); }
+.samr-letter { font-family: var(--font-d); font-size: 20px; font-weight: 700; min-width: 24px; line-height: 1; }
+.samr-row.target .samr-letter { color: var(--gold); }
+.samr-name { font-size: 13px; font-weight: 600; min-width: 100px; }
+.samr-desc { font-size: 12px; color: var(--muted); font-weight: 300; line-height: 1.45; }
+.samr-badge { margin-left: auto; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 9px; border-radius: 10px; white-space: nowrap; background: var(--gold); color: #0a0f1e; flex-shrink: 0; }
+.fisa { background: var(--bg2); border: 1px solid var(--gold-bdr); border-radius: var(--r); padding: 20px; margin-bottom: 14px; }
+.fisa-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px; }
+.fisa-title { font-family: var(--font-d); font-size: 18px; font-weight: 700; }
+.fisa-badge { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); padding: 4px 12px; border: 1px solid var(--gold-bdr); border-radius: 20px; }
+.fisa-context { background: var(--bg3); border-radius: 6px; padding: 14px 16px; margin-bottom: 14px; }
+.fisa-context-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.fisa-context p { font-size: 13px; line-height: 1.65; color: rgba(240,244,255,0.78); }
+.fisa-qs { display: flex; flex-direction: column; gap: 12px; }
+.fisa-q  { display: flex; gap: 12px; align-items: flex-start; }
+.fq-num { width: 28px; height: 28px; flex-shrink: 0; border-radius: 50%; background: var(--gold-dim); border: 1px solid var(--gold-bdr); color: var(--gold); font-family: var(--font-d); font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+.fq-title { font-size: 13px; font-weight: 600; margin-bottom: 3px; }
+.fq-hint  { font-size: 12px; font-weight: 300; color: var(--muted); line-height: 1.5; }
+.fisa-target { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+.target-pill { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 14px; border-radius: 4px; background: var(--gold); color: #0a0f1e; }
+.target-pill.alt { background: var(--bg3); border: 1px solid var(--gold-bdr); color: var(--gold); }
+.instruction { display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; background: var(--bg3); border-radius: 5px; border: 1px solid var(--bdr); margin-bottom: 10px; }
+.instr-icon { display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; flex-shrink: 0; color: var(--muted); margin-top: 1px; }
+.instr-num { font-family: var(--font-d); font-size: 16px; font-weight: 700; color: var(--gold); }
+.instr-text { font-size: 13px; line-height: 1.6; color: rgba(240,244,255,0.78); }
+.instr-text strong { color: var(--white); font-weight: 600; }
+.act-quote { background: rgba(201,168,76,0.05); border: 1px solid var(--gold-bdr); border-radius: 6px; padding: 18px 20px 18px 40px; font-family: var(--font-d); font-size: 18px; font-style: italic; line-height: 1.55; color: var(--gold-l); position: relative; margin-bottom: 14px; }
+.act-quote::before { content: '"'; font-size: 56px; color: var(--gold); opacity: 0.22; position: absolute; top: -4px; left: 10px; line-height: 1; pointer-events: none; }
+.vote-block { background: var(--bg2); border: 1px solid var(--bdr); border-radius: var(--r); padding: 20px; margin-bottom: 14px; }
+.vote-q { font-family: var(--font-d); font-size: 20px; font-weight: 700; margin-bottom: 6px; line-height: 1.25; }
+.vote-hint { font-size: 12.5px; color: var(--muted); margin-bottom: 16px; line-height: 1.55; }
+.vote-options { display: flex; flex-direction: column; gap: 8px; }
+.vote-opt { padding: 13px 16px; background: var(--bg3); border: 1px solid var(--bdr2); border-radius: 6px; font-size: 13px; color: rgba(240,244,255,0.72); text-align: left; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 12px; }
+.vote-opt:hover { border-color: var(--gold-bdr); color: var(--white); background: var(--gold-dim); }
+.vote-opt.selected { border-color: var(--gold); color: var(--white); background: var(--gold-dim); }
+.vote-opt-letter { width: 24px; height: 24px; border-radius: 4px; border: 1px solid var(--bdr2); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; transition: all 0.2s; }
+.vote-opt.selected .vote-opt-letter { background: var(--gold); border-color: var(--gold); color: #0a0f1e; }
+.angajament-block { background: linear-gradient(135deg, rgba(201,168,76,0.07) 0%, transparent 60%); border: 1px solid var(--gold-bdr); border-radius: var(--r); padding: 28px 20px; margin-bottom: 14px; text-align: center; }
+.ang-icon { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 12px; background: var(--gold-dim); border: 1px solid var(--gold-bdr); margin: 0 auto 16px; color: var(--gold); }
+.ang-title { font-family: var(--font-d); font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+.ang-q { font-family: var(--font-d); font-size: 17px; font-style: italic; color: var(--gold-l); line-height: 1.55; margin-bottom: 14px; }
+.ang-hint { font-size: 12px; font-weight: 300; color: var(--muted); line-height: 1.65; }
+.phase-nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px 24px; border-top: 1px solid var(--bdr); flex-shrink: 0; background: var(--bg); }
+.nav-btn { display: flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 6px; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; border: 1px solid var(--bdr2); color: var(--muted); transition: all 0.2s; }
+.nav-btn:hover:not(:disabled) { color: var(--white); }
+.nav-btn:disabled { opacity: 0.22; cursor: not-allowed; }
+.nav-btn-next { background: var(--gold); border-color: var(--gold); color: #0a0f1e; font-weight: 700; }
+.nav-btn-next:hover:not(:disabled) { background: var(--gold-l); border-color: var(--gold-l); color: #0a0f1e; }
+.nav-info { font-size: 11px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+.comp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.comp-tag { font-size: 9px; font-weight: 600; padding: 3px 10px; border: 1px solid var(--bdr2); border-radius: 4px; color: var(--muted); }
+.mt8  { margin-top: 8px; }  .mt12 { margin-top: 12px; } .mt4 { margin-top: 4px; }
+.mb10 { margin-bottom: 10px; } .mb16 { margin-bottom: 16px; } .mb6 { margin-bottom: 6px; }
+</style>
+</head>
+<body class="dot-bg">
+
+<!-- LANDING -->
+<div id="screen-landing">
+  <header class="landing-top">
+    <div class="landing-logo">
+      <span class="logo-text">DPPD · UVT</span>
+    </div>
+    <span class="landing-badge">Proiect DESIGN · 2026</span>
+  </header>
+  <main class="landing-hero">
+    <p class="hero-eyebrow">Atelier practic · Educație Socială · Clasa a VII-a</p>
+    <h1 class="hero-title">Design<br>de <em>instruire</em></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">Un cadru integrat pentru transformarea lecției dintr-o transmitere de informație într-o experiență autentică de cetățenie democratică.</p>
+    <div class="hero-tags">
+      <span class="hero-tag">Gagné adaptat</span>
+      <span class="hero-tag">SAMR</span>
+      <span class="hero-tag">PIC-RAT</span>
+      <span class="hero-tag">TPACK</span>
+      <span class="hero-tag">20–25 min</span>
+    </div>
+    <div class="entry-grid">
+      <button class="entry-card card-activitate" onclick="showActivitate()">
+        <div class="card-icon fi">
+          <i data-feather="play-circle" width="20" height="20"></i>
+        </div>
+        <p class="card-label">Acces liber</p>
+        <h2 class="card-title">Activitate</h2>
+        <p class="card-desc">Parcurge cele 4 faze ale atelierului cu instrumente de lucru și fișă de redesign.</p>
+        <div class="card-cta">
+          <span>Intră</span>
+          <i data-feather="arrow-right" width="14" height="14"></i>
+        </div>
+      </button>
+      <button class="entry-card card-ghid" onclick="openPasswordModal()">
+        <span class="card-lock fi"><i data-feather="lock" width="15" height="15"></i></span>
+        <div class="card-icon fi">
+          <i data-feather="file-text" width="20" height="20"></i>
+        </div>
+        <p class="card-label">Facilitatori</p>
+        <h2 class="card-title">Ghid</h2>
+        <p class="card-desc">Agendă detaliată, scripturi de facilitare și note operative pentru coordonatori.</p>
+        <div class="card-cta">
+          <span>Acces protejat</span>
+          <i data-feather="arrow-right" width="14" height="14"></i>
+        </div>
+      </button>
+    </div>
+  </main>
+  <footer class="landing-footer">
+    <span class="lf-text">Proiect <strong>DESIGN</strong> · Tufiș, Paul, Tudosi · DPPD UVT 2026</span>
+    <span class="lf-text">Coordonator: <strong>conf. univ. dr. Maria Niculescu</strong></span>
+  </footer>
+</div>
+
+<!-- MODAL PASSWORD -->
+<div id="modal-password" hidden>
+  <div class="modal-box">
+    <div class="modal-icon fi">
+      <i data-feather="shield" width="22" height="22"></i>
+    </div>
+    <h2 class="modal-title">Acces facilitatori</h2>
+    <p class="modal-sub">Ghidul de facilitare este protejat.<br>Introduceți parola pentru acces.</p>
+    <input type="password" id="pwd-input" class="modal-input" placeholder="Parola"
+      onkeydown="if(event.key==='Enter') checkPassword()" autocomplete="off">
+    <p id="pwd-error" class="modal-error" hidden>
+      <i data-feather="alert-circle" width="14" height="14"></i>
+      Parolă incorectă. Încercați din nou.
+    </p>
+    <div class="modal-btn-row">
+      <button class="btn-cancel" onclick="closePasswordModal()">Anulează</button>
+      <button class="btn-enter" onclick="checkPassword()">
+        Confirmă
+        <i data-feather="arrow-right" width="14" height="14"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- GHID -->
+<div id="screen-ghid" hidden>
+  <nav class="screen-bar screen-bar-light">
+    <button class="btn-back btn-back-light" onclick="backToLanding()">
+      <i data-feather="arrow-left" width="14" height="14"></i>
+      Înapoi
+    </button>
+    <span class="bar-title bar-title-light">Ghid de facilitare</span>
+    <span class="bar-title bar-title-light" style="opacity:0.4;">DESIGN · 2026</span>
+  </nav>
+  <div class="ghid-header">
+    <p class="ghid-eyebrow">Ghid de facilitare · Atelier practic</p>
+    <h1 class="ghid-h1">De la lecție la <em>experiență</em></h1>
+    <p class="ghid-hsub">Redesign instrucțional în timp real · Educație Socială, Cl. VII-a · Cetățenie democratică</p>
+    <div class="ghid-pills">
+      <span class="ghid-pill">20–25 minute</span>
+      <span class="ghid-pill">Atelier practic</span>
+      <span class="ghid-pill">Studiu de caz: Elaborarea legilor</span>
+      <span class="ghid-pill">Gagné + SAMR + PIC-RAT</span>
+      <span class="ghid-pill">CS 1.2 · 1.3 · 2.2 · 3.2</span>
+    </div>
+  </div>
+  <div class="ghid-body">
+    <div class="role-row mb6">
+      <span class="role-chip chip-s">Scop</span>
+      <p class="role-text">Participanții experimentează că <strong>redesignul instrucțional este posibil rapid</strong> și înțeleg diferența dintre o lecție care transmite informație (SAMR: A, PIC-RAT: IA) și una care produce <strong>experiență autentică de cetățenie activă</strong> (SAMR: R, PIC-RAT: CT).</p>
+    </div>
+    <div class="comp-row" style="margin-bottom:28px;">
+      <span class="comp-badge">CS 1.2</span>
+      <span class="comp-badge">CS 1.3</span>
+      <span class="comp-badge">CS 2.2</span>
+      <span class="comp-badge">CS 3.2</span>
+      <span class="comp-badge">Cl. VII-a - Ed. Socială</span>
+    </div>
+    <div class="ghid-summary">
+      <div class="gs-item"><span class="gs-num">3'</span><span class="gs-label">Captare atenție</span></div>
+      <div class="gs-item"><span class="gs-num">4'</span><span class="gs-label">Instrument Gagné</span></div>
+      <div class="gs-item"><span class="gs-num">10'</span><span class="gs-label">Redesign echipe</span></div>
+      <div class="gs-item"><span class="gs-num">6'</span><span class="gs-label">Prezentare + reflecție</span></div>
+    </div>
+    <hr class="g-divider">
+    <p class="section-label">Agenda detaliată</p>
+    <div class="g-timeline">
+
+      <!-- F1 -->
+      <div class="g-phase">
+        <div class="g-phase-time">
+          <div class="g-bubble"><span class="g-bubble-min">0–3</span><span class="g-bubble-sub">min</span></div>
+        </div>
+        <div class="g-phase-body">
+          <div class="g-phase-header">
+            <span class="g-phase-n">Faza 1</span>
+            <span class="g-phase-t">Captarea atenției - cele două lecții</span>
+          </div>
+          <div class="role-row">
+            <span class="role-chip chip-f">Facilitator</span>
+            <p class="role-text">Proiectezi sau prezinți oral <strong>două variante ale aceleiași lecții</strong>: tema „Procesul de elaborare a legilor" (Ed. Socială, cl. VII-a). Participanții au acces la comparație pe propriul dispozitiv prin pagina de Activitate.</p>
+          </div>
+          <div class="case-box">
+            <p class="cb-title">Studiu de caz - Lecție: Procesul de elaborare a legilor · Cl. VII-a</p>
+            <div class="cb-grid">
+              <div class="cb-col before">
+                <h4>Varianta A - starea inițială</h4>
+                <ul>
+                  <li>Profesor explică etapele procesului legislativ (PPT)</li>
+                  <li>Elevii citesc un articol din Constituție (text tipărit)</li>
+                  <li>Sarcina: „Identificați 3 etape ale elaborării unei legi"</li>
+                  <li>Discuție frontală ghidată de profesor</li>
+                  <li>SAMR: Augmentare - sarcina rămâne identică cu lecția tradițională</li>
+                  <li>PIC-RAT: PA - pasiv / amplificat, fără transformarea sarcinii</li>
+                </ul>
+              </div>
+              <div class="cb-col after">
+                <h4>Varianta B - redesign propus</h4>
+                <ul>
+                  <li>Echipele primesc o problemă comunitară autentică (ex: lipsa rampei de acces)</li>
+                  <li>Redactează colaborativ o propunere de regulament (Google Docs)</li>
+                  <li>Simulare ședință Consiliu Local: prezentare, amendamente, vot (Mentimeter)</li>
+                  <li>Produs: act normativ digital publicat și comentat de comunitate</li>
+                  <li>SAMR: Redefinire - imposibil fără tehnologie</li>
+                  <li>PIC-RAT: CT - creativ + transformare, artefact autentic publicabil</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="script">
+            „Ambele abordări vizează aceleași competențe specifice. Ambele folosesc tehnologie. Ce diferă - și de ce diferența aceasta contează pentru elevul din clasa a VII-a?"
+          </div>
+          <div class="role-row mt8">
+            <span class="role-chip chip-p">Participanți</span>
+            <p class="role-text">Identifică în 60 de secunde <strong>cel puțin o diferență esențială</strong> - răspuns oral, fără presiune.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- F2 -->
+      <div class="g-phase">
+        <div class="g-phase-time">
+          <div class="g-bubble"><span class="g-bubble-min">3–7</span><span class="g-bubble-sub">min</span></div>
+        </div>
+        <div class="g-phase-body">
+          <div class="g-phase-header">
+            <span class="g-phase-n">Faza 2</span>
+            <span class="g-phase-t">Instrumentul - 3 întrebări Gagné în 90 de secunde</span>
+          </div>
+          <div class="role-row">
+            <span class="role-chip chip-f">Facilitator</span>
+            <p class="role-text">Explici <strong>pe scurt</strong> cele 3 întrebări operaționale. Nu explici tot modelul Gagné - doar ce este necesar pentru sarcina de redesign. Participanții văd întrebările pe dispozitivul propriu în pagina de Activitate.</p>
+          </div>
+          <div class="case-box">
+            <p class="cb-title">Cele 3 întrebări operaționale</p>
+            <div class="three-q-grid">
+              <div class="tq-num">1</div>
+              <div>
+                <strong style="font-size:13px;color:var(--navy-t);">Cum captezi atenția și ce cunoștințe anterioare activezi?</strong>
+                <p style="font-size:12px;color:var(--muted-t);margin-top:2px;">Evenimentele 1–4 Gagné: organizare, captare, obiective, reactualizare.</p>
+              </div>
+              <div class="tq-num">2</div>
+              <div>
+                <strong style="font-size:13px;color:var(--navy-t);">Cum obții performanța și oferi feedback în timp real?</strong>
+                <p style="font-size:12px;color:var(--muted-t);margin-top:2px;">Evenimentele 5–8: prezentare conținut, dirijare, performanță, feedback.</p>
+              </div>
+              <div class="tq-num">3</div>
+              <div>
+                <strong style="font-size:13px;color:var(--navy-t);">Cum asiguri transferul și ce rămâne după lecție?</strong>
+                <p style="font-size:12px;color:var(--muted-t);margin-top:2px;">Evenimentele 9–11: evaluare, intensificare retenție, închidere.</p>
+              </div>
+            </div>
+          </div>
+          <div class="tip-box">
+            <span class="fi"><i data-feather="info" width="14" height="14"></i></span>
+            <span>Echipele nu completează toate cele 11 evenimente - răspund doar la cele 3 întrebări. Simplitatea este intenționată și validată prin Gagné adaptat (Ilie, 2014).</span>
+          </div>
+          <div class="role-row mt8">
+            <span class="role-chip chip-m">Material</span>
+            <p class="role-text">Pagina de Activitate afișează întrebările și scala SAMR pe dispozitivele participanților. Nu este nevoie de materiale tipărite.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- F3 -->
+      <div class="g-phase">
+        <div class="g-phase-time">
+          <div class="g-bubble"><span class="g-bubble-min">7–17</span><span class="g-bubble-sub">min</span></div>
+        </div>
+        <div class="g-phase-body">
+          <div class="g-phase-header">
+            <span class="g-phase-n">Faza 3</span>
+            <span class="g-phase-t">Redesign în echipe - 10 minute</span>
+          </div>
+          <div class="role-row">
+            <span class="role-chip chip-f">Facilitator</span>
+            <p class="role-text">Împarți în <strong>echipe de 2–4</strong>. Sarcina: redesignul unei lecții pe tema <strong>„Alegerile și votul - cum alegem reprezentanții?"</strong> - temă distinctă față de studiul de caz analizat anterior, dar din același domeniu curricular.</p>
+          </div>
+          <div class="case-box">
+            <p class="cb-title">Lecția inițială pentru redesign - Varianta A</p>
+            <div style="font-size:13px;color:var(--navy-t);line-height:1.65;">
+              <p style="margin-bottom:8px;"><strong>Tema:</strong> „Alegerile și votul - alegerea reprezentanților" · CS 3.1, 3.2 · Ed. Socială, cl. VII-a</p>
+              <p style="margin-bottom:8px;"><strong>Abordare inițială (SAMR: A / PIC-RAT: IA):</strong> Profesorul explică ce sunt alegerile; elevii vizionează un clip despre procesul electoral; completează individual o fișă cu tipuri de alegeri; discuție frontală la final.</p>
+              <p style="color:var(--red);font-size:12.5px;"><strong>Limita abordării:</strong> Elevul consumă informație despre democrație, dar nu exercită niciodată democrația în lecție.</p>
+            </div>
+          </div>
+          <div class="role-row mt8">
+            <span class="role-chip chip-p">Participanți</span>
+            <p class="role-text">Răspund la cele 3 întrebări Gagné pentru lecția redesignată. Pregătesc 60 de secunde de prezentare orală: <strong>„Ce am schimbat și de ce produce mai multă cetățenie activă autentică?"</strong></p>
+          </div>
+          <div class="role-row mt8">
+            <span class="role-chip chip-f">Facilitator</span>
+            <p class="role-text">Circulă printre echipe. Dacă o echipă este blocată, pune întrebarea: <em>„Ce ar FACE elevul cu tehnologia pe care nu putea face fără ea? Exercită efectiv democrația sau doar citește despre ea?"</em></p>
+          </div>
+          <div class="tip-box">
+            <span class="fi"><i data-feather="info" width="14" height="14"></i></span>
+            <span><strong>Direcții posibile:</strong> campanie electorală simulată cu vot real în clasă; podcast de analiză electorală; dezbatere cu roluri fixe (candidat, jurnalist, alegător critic); manifest civic co-redactat și supus votului.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- F4 -->
+      <div class="g-phase">
+        <div class="g-phase-time">
+          <div class="g-bubble"><span class="g-bubble-min">17–23</span><span class="g-bubble-sub">min</span></div>
+        </div>
+        <div class="g-phase-body">
+          <div class="g-phase-header">
+            <span class="g-phase-n">Faza 4</span>
+            <span class="g-phase-t">Prezentare, vot și reflecție metacognitivă</span>
+          </div>
+          <div class="role-row">
+            <span class="role-chip chip-f">Facilitator</span>
+            <p class="role-text">1–2 echipe prezintă în 60 de secunde. Restul votează: <strong>„Care design produce mai multă cetățenie activă - nu doar informație despre democrație?"</strong></p>
+          </div>
+          <div class="script">
+            „Nu votăm ce e mai elaborat sau mai digital. Votăm ce design îl pune pe elev să exercite efectiv democrația - să delibereze, să decidă, să fie responsabil pentru un rezultat real. Justificați votul prin unul din modele: Gagné, SAMR sau PIC-RAT."
+          </div>
+          <div class="role-row mt8">
+            <span class="role-chip chip-f">Facilitator</span>
+            <p class="role-text">Angajament metacognitiv final - 90 de secunde:</p>
+          </div>
+          <div class="script">
+            „Un singur lucru. Ce schimbați în prima lecție de săptămâna viitoare - bazat pe ce am construit azi? Nu trebuie să fie mare. Trebuie să fie intenționat."
+          </div>
+          <div class="role-row mt8">
+            <span class="role-chip chip-p">Participanți</span>
+            <p class="role-text">Răspuns oral, 1 propoziție fiecare. Angajamentul nu se înregistrează formal - contează că este verbalizat în grup.</p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /g-timeline -->
+
+    <hr class="g-divider">
+    <p class="section-label">Materiale necesare</p>
+    <div class="mat-grid">
+      <div class="mat-card">
+        <div class="mat-icon fi"><i data-feather="smartphone" width="18" height="18"></i></div>
+        <p class="mat-t">Pagina de Activitate</p>
+        <p class="mat-d">Accesibilă pe orice dispozitiv. Conține toate instrumentele și fișa de redesign.</p>
+      </div>
+      <div class="mat-card">
+        <div class="mat-icon fi"><i data-feather="monitor" width="18" height="18"></i></div>
+        <p class="mat-t">Proiecție studiu de caz</p>
+        <p class="mat-d">Varianta A vs. B - pentru Faza 1. Opțional dacă toți participanții au dispozitiv.</p>
+      </div>
+      <div class="mat-card">
+        <div class="mat-icon fi"><i data-feather="edit-3" width="18" height="18"></i></div>
+        <p class="mat-t">Post-it-uri (opțional)</p>
+        <p class="mat-d">Pentru angajament final sau vot argumentat la grupuri mai mari de 15 persoane.</p>
+      </div>
+    </div>
+
+    <hr class="g-divider">
+    <p class="section-label">Note de facilitare</p>
+    <div class="tip-box mt8">
+      <span class="fi"><i data-feather="clock" width="14" height="14"></i></span>
+      <span><strong>Timp comprimat (20 min exact):</strong> Reduceți Faza 3 la 8 minute și Faza 4 la 4 minute. Reflecția metacognitivă se face direct, fără vot intermediar.</span>
+    </div>
+    <div class="tip-box mt8">
+      <span class="fi"><i data-feather="users" width="14" height="14"></i></span>
+      <span><strong>Grup mare (10+):</strong> 3 echipe, prezintă 2, a treia evaluează oral prezentările celorlalte prin grila SAMR.</span>
+    </div>
+    <div class="tip-box mt8">
+      <span class="fi"><i data-feather="target" width="14" height="14"></i></span>
+      <span><strong>Mesajul esențial:</strong> Democrația nu se predă - se exercită. Valoarea unui design instrucțional nu este că folosește tehnologie, ci că pune elevul să fie cetățean activ în lecție, nu spectator al cetățeniei altora.</span>
+    </div>
+  </div>
+  <footer class="ghid-footer">
+    <span>Proiect <strong>DESIGN</strong> · Tufiș, Paul, Tudosi · DPPD UVT 2026</span>
+    <span>Coordonator: <strong>conf. univ. dr. Maria Niculescu</strong></span>
+  </footer>
+</div>
+
+<!-- ACTIVITATE -->
+<div id="screen-activitate" hidden>
+  <nav class="screen-bar screen-bar-dark">
+    <button class="btn-back btn-back-dark" onclick="backToLanding()">
+      <i data-feather="arrow-left" width="14" height="14"></i>
+      Înapoi
+    </button>
+    <span class="bar-title bar-title-dark" id="phase-label-bar">Faza 1 din 4</span>
+    <span class="bar-title bar-title-dark" style="opacity:0.35;">DESIGN · 2026</span>
+  </nav>
+  <div class="progress-track">
+    <div class="progress-fill" id="progress-fill" style="width:25%;"></div>
+  </div>
+  <div class="phase-dots">
+    <div class="phase-dot active" id="dot-0"></div>
+    <div class="phase-dot" id="dot-1"></div>
+    <div class="phase-dot" id="dot-2"></div>
+    <div class="phase-dot" id="dot-3"></div>
+  </div>
+  <div class="timer-block">
+    <button class="timer-btn" id="btn-reset" onclick="resetTimer()" title="Resetează timer">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 .49-3.51"></path></svg>
+    </button>
+    <span class="timer-display" id="timer-display">03:00</span>
+    <button class="timer-btn" id="btn-play" onclick="toggleTimer()" title="Start / Pauză">
+      <svg id="icon-play" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+      <svg id="icon-pause" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><line x1="6" y1="4" x2="6" y2="20"></line><line x1="18" y1="4" x2="18" y2="20"></line></svg>
+    </button>
+  </div>
+
+  <div class="phase-scroll">
+
+    <!-- FAZA 1 -->
+    <div class="phase-panel" id="phase-0">
+      <p class="act-phase-num">Faza 01 - 3 minute</p>
+      <h2 class="act-phase-title">Aceeași lecție,<br>două lumi</h2>
+      <p class="act-phase-sub">Analizați comparativ cele două abordări ale aceleiași lecții. Identificați ce este fundamental diferit - nu în formă, ci în natura experienței elevului.</p>
+      <div class="act-card">
+        <p class="act-card-title">Studiu de caz · Procesul de elaborare a legilor · Ed. Socială, Cl. VII-a</p>
+        <div class="cmp-grid">
+          <div class="cmp-col cmp-before">
+            <p class="cmp-col-label">Varianta A · Inițial</p>
+            <ul>
+              <li>Profesor explică etapele procesului legislativ</li>
+              <li>Elevii citesc un articol din Constituție</li>
+              <li>Completează: „Identificați 3 etape ale elaborării unei legi"</li>
+              <li>Discuție frontală la final</li>
+              <li><strong style="color:rgba(224,85,85,0.9);">SAMR: Augmentare</strong></li>
+              <li><strong style="color:rgba(224,85,85,0.9);">PIC-RAT: PA - Pasiv + Amplificare</strong></li>
+            </ul>
+          </div>
+          <div class="cmp-col cmp-after">
+            <p class="cmp-col-label">Varianta B · Redesign</p>
+            <ul>
+              <li>Echipele primesc o problemă comunitară reală (ex: lipsa rampei de acces)</li>
+              <li>Redactează colaborativ o propunere de regulament (Google Docs)</li>
+              <li>Simulare ședință Consiliu Local: prezentare, amendamente, vot</li>
+              <li>Produs: act normativ digital publicat și comentat</li>
+              <li><strong style="color:rgba(61,184,122,0.9);">SAMR: Redefinire</strong></li>
+              <li><strong style="color:rgba(61,184,122,0.9);">PIC-RAT: CT - Creativ + Transformare</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="instruction">
+        <span class="instr-icon fi"><i data-feather="message-square" width="16" height="16"></i></span>
+        <p class="instr-text"><strong>Sarcina voastră (60 sec):</strong> Discutați în pereche. Ce este fundamental diferit - nu în formă, ci în natura experienței pe care o trăiește elevul?</p>
+      </div>
+      <div class="comp-tags mt8">
+        <span class="comp-tag">CS 1.2 - Analizarea situațiilor problematice</span>
+        <span class="comp-tag">CS 2.2 - Participarea prin proiect</span>
+        <span class="comp-tag">CS 3.2 - Aplicarea valorilor democratice</span>
+      </div>
+    </div>
+
+    <!-- FAZA 2 -->
+    <div class="phase-panel" id="phase-1" hidden>
+      <p class="act-phase-num">Faza 02 - 4 minute</p>
+      <h2 class="act-phase-title">Instrumentul</h2>
+      <p class="act-phase-sub">Trei întrebări dintr-un cadru testat. Le veți folosi imediat pentru a redesigna propria lecție.</p>
+      <div class="act-card">
+        <p class="act-card-title gold">3 Întrebări Gagné (adaptat Ilie, 2014)</p>
+        <div class="gagne-q">
+          <div class="gagne-n">1</div>
+          <div>
+            <p class="gagne-title">Cum captezi atenția și activezi cunoștințe anterioare?</p>
+            <p class="gagne-sub">Ev. 1–4: organizare mediu, captare atenție, anunțare obiective, reactualizare scheme cognitive.</p>
+          </div>
+          <div class="gagne-n">2</div>
+          <div>
+            <p class="gagne-title">Cum obții performanța și oferi feedback autentic?</p>
+            <p class="gagne-sub">Ev. 5–8: prezentare conținut, dirijare, asigurarea performanței, feedback imediat și continuu.</p>
+          </div>
+          <div class="gagne-n">3</div>
+          <div>
+            <p class="gagne-title">Cum asiguri că transferul există după lecție?</p>
+            <p class="gagne-sub">Ev. 9–11: evaluare propriu-zisă, intensificarea retenției, aprecieri finale și închidere.</p>
+          </div>
+        </div>
+      </div>
+      <div class="act-card mt12">
+        <p class="act-card-title">Scala SAMR - unde vrei să ajungi?</p>
+        <div class="samr-ladder">
+          <div class="samr-row target">
+            <span class="samr-letter">R</span>
+            <span class="samr-name">Redefinire</span>
+            <span class="samr-desc">Sarcini imposibile fără tehnologie. Creează experiențe complet noi.</span>
+            <span class="samr-badge">Ținta</span>
+          </div>
+          <div class="samr-row target">
+            <span class="samr-letter">M</span>
+            <span class="samr-name">Modificare</span>
+            <span class="samr-desc">Sarcina existentă este restructurată fundamental prin tehnologie.</span>
+            <span class="samr-badge">Acceptabil</span>
+          </div>
+          <div class="samr-row">
+            <span class="samr-letter">A</span>
+            <span class="samr-name">Augmentare</span>
+            <span class="samr-desc">Înlocuire cu îmbunătățiri funcționale. Sarcina rămâne similară.</span>
+          </div>
+          <div class="samr-row">
+            <span class="samr-letter">S</span>
+            <span class="samr-name">Substituție</span>
+            <span class="samr-desc">Înlocuire directă fără nicio schimbare funcțională.</span>
+          </div>
+        </div>
+      </div>
+      <div class="instruction mt4">
+        <span class="instr-icon fi"><i data-feather="crosshair" width="16" height="16"></i></span>
+        <p class="instr-text"><strong>PIC-RAT - zona-țintă: CT.</strong> Elevul <em>creează</em> un artefact digital și tehnologia <em>transformă</em> practica didactică. Nu înlocuiește lecția tradițională - o redefinește.</p>
+      </div>
+    </div>
+
+    <!-- FAZA 3 -->
+    <div class="phase-panel" id="phase-2" hidden>
+      <p class="act-phase-num">Faza 03 - 10 minute</p>
+      <h2 class="act-phase-title">Reproiectați<br>lecția</h2>
+      <p class="act-phase-sub">Plecați de la o lecție inițială despre vot și alegeri. Redesignați-o pentru a produce cetățenie autentică, nu informație despre cetățenie.</p>
+      <div class="fisa">
+        <div class="fisa-header">
+          <span class="fisa-title">Fișă de lucru</span>
+          <span class="fisa-badge">Echipe de 2–4</span>
+        </div>
+        <div class="fisa-context">
+          <p class="fisa-context-label">Lecția de redesignat - Varianta A</p>
+          <p><strong>Tema:</strong> „Alegerile și votul - cum alegem reprezentanții?" · CS 3.1, 3.2 · Ed. Socială, cl. VII-a</p>
+          <p style="margin-top:8px;"><strong>Abordare inițială:</strong> Profesorul explică despre alegeri și vot; elevii vizionează un clip; completează individual o fișă cu tipuri de alegeri; discuție frontală.</p>
+          <p style="margin-top:8px;color:rgba(224,85,85,0.85);font-size:12.5px;"><strong>Limita esențială:</strong> Elevul <em>citește</em> despre democrație, dar nu <em>exercită</em> niciodată democrația în lecție.</p>
+        </div>
+        <div class="fisa-qs">
+          <div class="fisa-q">
+            <div class="fq-num">1</div>
+            <div>
+              <p class="fq-title">Cum captezi atenția și ce cunoștințe activezi?</p>
+              <p class="fq-hint">Ce situație autentică face elevul să simtă că votul și alegerile contează personal - nu doar ca noțiune de manual?</p>
+            </div>
+          </div>
+          <div class="fisa-q">
+            <div class="fq-num">2</div>
+            <div>
+              <p class="fq-title">Cum obții performanța și oferi feedback autentic?</p>
+              <p class="fq-hint">Ce face efectiv elevul - exercită democrația sau citește despre ea? Cum primește feedback nu de la profesor, ci de la situație?</p>
+            </div>
+          </div>
+          <div class="fisa-q">
+            <div class="fq-num">3</div>
+            <div>
+              <p class="fq-title">Ce rămâne după lecție?</p>
+              <p class="fq-hint">Există un produs, o decizie, un artefact care supraviețuiește lecției? Ce transfer există în viața civică reală a elevului?</p>
+            </div>
+          </div>
+        </div>
+        <div class="fisa-target">
+          <span class="target-pill">Ținta: SAMR M sau R</span>
+          <span class="target-pill alt">Ținta: PIC-RAT zona CT sau IT</span>
+        </div>
+      </div>
+      <div class="instruction mb10">
+        <span class="instr-icon fi"><i data-feather="zap" width="16" height="16"></i></span>
+        <p class="instr-text"><strong>Direcții posibile:</strong> campanie electorală simulată cu vot real; podcast de analiză electorală; manifest civic co-redactat și dezbătut; dezbatere cu roluri fixe - candidat, jurnalist, alegător critic.</p>
+      </div>
+      <div class="instruction">
+        <span class="instr-icon fi"><i data-feather="alert-triangle" width="16" height="16"></i></span>
+        <p class="instr-text">Dacă sunteți blocați: întrebați-vă <em>„Ce ar FACE elevul cu tehnologia pe care nu putea face fără ea?"</em> - aceasta este esența nivelului Redefinire și a zonei CT.</p>
+      </div>
+    </div>
+
+    <!-- FAZA 4 -->
+    <div class="phase-panel" id="phase-3" hidden>
+      <p class="act-phase-num">Faza 04 - 6 minute</p>
+      <h2 class="act-phase-title">Prezentați.<br>Votați. Angajați-vă.</h2>
+      <p class="act-phase-sub">Fiecare echipă prezintă în 60 de secunde. Grupul votează argumentat pe modele. Fiecare participant se angajează la un singur schimb concret.</p>
+      <div class="act-quote">
+        „Nu votăm ce e mai elaborat sau mai digital. Votăm ce design îl pune pe elev să exercite efectiv democrația - să delibereze, să decidă, să fie responsabil pentru un rezultat real."
+      </div>
+      <div class="vote-block">
+        <p class="vote-q">Votul argumentat</p>
+        <p class="vote-hint">Care design produce mai multă cetățenie activă autentică? Justificați prin referință la un model - Gagné, SAMR sau PIC-RAT.</p>
+        <div class="vote-options">
+          <button class="vote-opt" onclick="selectVote(this)">
+            <span class="vote-opt-letter">A</span>
+            <span>Designul nostru - pentru că transformă elevul din spectator în actor democratic</span>
+          </button>
+          <button class="vote-opt" onclick="selectVote(this)">
+            <span class="vote-opt-letter">B</span>
+            <span>Designul altei echipe - pentru că atinge mai bine zona CT în PIC-RAT</span>
+          </button>
+          <button class="vote-opt" onclick="selectVote(this)">
+            <span class="vote-opt-letter">C</span>
+            <span>Ambele - cu argumente pentru a hibridiza cele mai bune elemente din fiecare</span>
+          </button>
+        </div>
+      </div>
+      <div class="angajament-block">
+        <div class="ang-icon fi">
+          <i data-feather="award" width="22" height="22"></i>
+        </div>
+        <p class="ang-title">Angajamentul final</p>
+        <p class="ang-q">„Ce schimb în prima lecție de săptămâna viitoare - un singur lucru - bazat pe ce am construit azi?"</p>
+        <p class="ang-hint">Nu trebuie să fie mare. Trebuie să fie <strong style="color:var(--gold-l);">intenționat</strong>. Verbalizați în grup - un rând fiecare.</p>
+      </div>
+      <div class="act-card">
+        <p class="act-card-title">Concluzii sintetice</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div class="instruction" style="margin:0;">
+            <span class="instr-icon"><span class="instr-num">1</span></span>
+            <p class="instr-text">Democrația nu se predă - <strong>se exercită.</strong> Un design instrucțional care nu pune elevul să acționeze democratic rămâne transmitere de informație.</p>
+          </div>
+          <div class="instruction" style="margin:0;">
+            <span class="instr-icon"><span class="instr-num">2</span></span>
+            <p class="instr-text">Modelele (Gagné, SAMR, PIC-RAT) nu sunt birocrație - sunt <strong>discipline profesionale</strong> care reduc arbitrarul și cresc coerența internă a lecției.</p>
+          </div>
+          <div class="instruction" style="margin:0;">
+            <span class="instr-icon"><span class="instr-num">3</span></span>
+            <p class="instr-text">Tehnologia are valoare <strong>numai</strong> când transformă sarcina sau produce ceva imposibil fără ea - nu când decorează o lecție tradițională neschimbată.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /phase-scroll -->
+
+  <div class="phase-nav">
+    <button class="nav-btn" id="btn-prev" onclick="prevPhase()" disabled>
+      <i data-feather="arrow-left" width="14" height="14"></i>
+      Anterior
+    </button>
+    <span class="nav-info" id="nav-info">1 / 4</span>
+    <button class="nav-btn nav-btn-next" id="btn-next" onclick="nextPhase()">
+      Următor
+      <i data-feather="arrow-right" width="14" height="14"></i>
+    </button>
+  </div>
+</div>
+
+<script>
+  const PASSWORD  = 'DESIGN2026';
+  const DURATIONS = [180, 240, 600, 360];
+  let currentPhase = 0, timerSeconds = DURATIONS[0];
+  let timerInterval = null, timerRunning = false;
+
+  function showScreen(id) {
+    ['screen-landing','screen-ghid','screen-activitate'].forEach(s => {
+      document.getElementById(s).hidden = (s !== id);
+    });
+    if (typeof feather !== 'undefined') feather.replace();
+  }
+  function backToLanding() { stopTimer(); showScreen('screen-landing'); }
+
+  function openPasswordModal() {
+    document.getElementById('modal-password').hidden = false;
+    setTimeout(() => document.getElementById('pwd-input').focus(), 50);
+  }
+  function closePasswordModal() {
+    document.getElementById('modal-password').hidden = true;
+    document.getElementById('pwd-input').value = '';
+    document.getElementById('pwd-error').hidden = true;
+  }
+  function checkPassword() {
+    if (document.getElementById('pwd-input').value.trim() === PASSWORD) {
+      closePasswordModal();
+      showScreen('screen-ghid');
+    } else {
+      document.getElementById('pwd-error').hidden = false;
+      document.getElementById('pwd-input').value = '';
+      document.getElementById('pwd-input').focus();
+      if (typeof feather !== 'undefined') feather.replace();
+    }
+  }
+
+  function showActivitate() { showScreen('screen-activitate'); setPhase(0); }
+
+  function setPhase(n) {
+    stopTimer();
+    currentPhase = n;
+    for (let i = 0; i < 4; i++) {
+      const p = document.getElementById('phase-' + i);
+      if (p) p.hidden = (i !== n);
+      const d = document.getElementById('dot-' + i);
+      if (d) {
+        d.classList.remove('active','done');
+        if (i < n) d.classList.add('done');
+        else if (i === n) d.classList.add('active');
+      }
+    }
+    document.getElementById('progress-fill').style.width = ((n + 1) / 4 * 100) + '%';
+    document.getElementById('phase-label-bar').textContent = 'Faza ' + (n + 1) + ' din 4';
+    document.getElementById('nav-info').textContent = (n + 1) + ' / 4';
+    document.getElementById('btn-prev').disabled = (n === 0);
+    const nxt = document.getElementById('btn-next');
+    if (n === 3) {
+      nxt.innerHTML = 'Finalizat <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+      nxt.disabled = true;
+    } else {
+      nxt.innerHTML = 'Următor <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
+      nxt.disabled = false;
+    }
+    timerSeconds = DURATIONS[n];
+    updateTimerDisplay();
+    setPlayState(false);
+    const s = document.querySelector('.phase-scroll');
+    if (s) s.scrollTop = 0;
+  }
+  function nextPhase() { if (currentPhase < 3) setPhase(currentPhase + 1); }
+  function prevPhase() { if (currentPhase > 0) setPhase(currentPhase - 1); }
+
+  function updateTimerDisplay() {
+    const m = Math.floor(timerSeconds / 60), s = timerSeconds % 60;
+    const el = document.getElementById('timer-display');
+    el.textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+    el.classList.remove('urgent','done');
+    if (timerSeconds === 0) el.classList.add('done');
+    else if (timerSeconds <= 30) el.classList.add('urgent');
+  }
+  function setPlayState(playing) {
+    document.getElementById('icon-play').style.display  = playing ? 'none'  : 'block';
+    document.getElementById('icon-pause').style.display = playing ? 'block' : 'none';
+    document.getElementById('btn-play').classList.toggle('active', playing);
+  }
+  function toggleTimer() { if (timerSeconds === 0) return; timerRunning ? stopTimer() : startTimer(); }
+  function startTimer() {
+    timerRunning = true; setPlayState(true);
+    timerInterval = setInterval(() => {
+      if (timerSeconds > 0) { timerSeconds--; updateTimerDisplay(); }
+      else { stopTimer(); document.getElementById('timer-display').classList.add('done'); }
+    }, 1000);
+  }
+  function stopTimer() {
+    timerRunning = false; clearInterval(timerInterval); timerInterval = null; setPlayState(false);
+  }
+  function resetTimer() { stopTimer(); timerSeconds = DURATIONS[currentPhase]; updateTimerDisplay(); }
+
+  function selectVote(el) {
+    document.querySelectorAll('.vote-opt').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+
+  document.getElementById('modal-password').addEventListener('click', function(e) {
+    if (e.target === this) closePasswordModal();
+  });
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof feather !== 'undefined') feather.replace();
+  });
+</script>
+</body>
+</html>
